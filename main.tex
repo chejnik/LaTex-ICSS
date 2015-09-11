@@ -4,12 +4,12 @@
 
 \newif\ifmakecovers        \makecoverstrue
 \newif\ifmakefrontmatter   \makefrontmattertrue
-\newif\ifinputintroduction \inputintroductionfalse
-\newif\ifinputletters      \inputlettersfalse
-\newif\ifinputphon         \inputphonfalse
-\newif\ifinputmorpho       \inputmorphofalse
+\newif\ifinputintroduction \inputintroductiontrue
+\newif\ifinputletters      \inputletterstrue
+\newif\ifinputphon         \inputphontrue
+\newif\ifinputmorpho       \inputmorphotrue
 \newif\ifmakebackmatter    \makebackmattertrue
-
+\newif\ifmakeapendix \makeapendixtrue
 
 % ################################################################# DOCUMENT #
 
@@ -60,22 +60,21 @@ Autor \textit{Islandské gramatiky}:\\
   \textbf{Vojtěch Kupča}\\[\baselineskip]
 Poděkování:\\
   \textbf{Dorotě Nierychlewské-Chejn, Jiřině Hanzlové, Jiřině Chejnové,
-          Simoně Petrásové,\\ Petru Mikešovi, Renatě Peškové Emilsson,
-          Amiru Mulahumici, Kristýně Antonové,\\ Martině Kašparové,
-          Lucii Brabcové}\\[\baselineskip]
+          Simoně Petrásové,\\ Petru Mikešovi, Vojtěchu Kupčovi, 
+          Renatě Peškové Emilsson, Amiru Mulahumici, \\ Kristýně Antonové, 
+          Martině Kašparové, Lucii Brabcové}\\[\baselineskip]
 Finanční příspěvek na výtisk exemplářů určených knihovnám\\ v České republice,
 Slovenské republice a na Islandu poskytl:\\
   \textbf{Petr Mikeš, Dorota Nierychlewska-Chejn, Jiřina Chejnová, Otta Chejn}
   \\[36\baselineskip]
 \textbf{Hvalur.org - \the\year}\\
 Licence: \textbf{GNU Free Documentation License}\\
-Sazba: % \textbf{Paolo al-Imk\=an\=\i\ Brasolin}
-  \textbf\LaTeX\ za cenné asistance uživatelů
-  \textbf{\TeX\ - \LaTeX\ Stack Exchange}\\[\baselineskip]
+Sazba: \textbf{Paolo al-Imk\=an\=\i\ Brasolin} v prostředí  \textbf\LaTeX\\
+  Zvláštní poděkování patří uživatelům  \textbf{\TeX\ - \LaTeX\ Stack Exchange}\\[\baselineskip]
 \textbf\ISBN\\[\baselineskip]
 Design pevné vazby: \textbf{Dorota Nierychlewska-Chejn, Jiřina Chejnová}\\
 Tisk: \textbf{Tiskárna Melmen, Pardubice}\\
-Heslová část vysázena patkovým fontem Tpagella,
+Heslová část vysázena patkovým fontem \TeX\ Gyre Pagella,
 hesla bezpatkovým fontem {\phvfamily Helvetica}.
 \end{minipage}
 
@@ -174,13 +173,15 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 
 \section{Seznam islandských fonémů}              \label{sec:phon_phonems}
 \input{phon/phonems}
+\clearpage
 
-\section{Výslovnost islandských samohlásek}      \label{sec:phon_vowels}
-\LTXtable{\columnwidth}{phon/vowels}
+%\section{Výslovnost islandských samohlásek}      \label{sec:phon_vowels}
+%\LTXtable{\columnwidth}{phon/vowels}
+%\clearpage
 
-\section{Výslovnost islandských souhlásek}       \label{sec:phon_consonants}
-\LTXtable{\columnwidth}{phon/consonants}
-
+%\section{Výslovnost islandských souhlásek}       \label{sec:phon_consonants}
+%\LTXtable{\columnwidth}{phon/consonants}
+%\clearpage
 \fi
 
 % =============================================================== MORPHOLOGY =
@@ -192,30 +193,32 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 \chapter{Morfologický klíč}                      \label{sec:morpho}
 
 \section{Podstatné jméno, rod mužský}            \label{sec:morpho_m}
-{\small\LTXfw{morpho/m}}
-\input{morpho/m_info}
+ {\small\LTXfw{morpho/m}}
+\clearpage
 
 \section{Podstatné jméno, rod ženský}            \label{sec:morpho_f}
-{\small\LTXfw{morpho/f}}
-\input{morpho/f_info}
+ {\small\LTXfw{morpho/f}}
+\clearpage
 
 \section{Podstatné jméno, rod střední}           \label{sec:morpho_n}
-{\small\LTXfw{morpho/n}}
-\input{morpho/n_info}
+ {\small\LTXfw{morpho/n}}
+\clearpage
 
 \section{Přídavné jméno}                         \label{sec:morpho_adj}
-{\small\LTXfw{morpho/adj}}
-\input{morpho/adj_info}
+ {\small\LTXfw{morpho/adj}}
+\clearpage
 
 \section{Zájmeno}                                \label{sec:morpho_pron}
-\input{morpho/pron.tex}
+ \input{morpho/pron.tex}
+\clearpage
 
 \section{Číslovka}                               \label{sec:morpho_num}
-{\small\LTXfw{morpho/num.tex}}
+ {\small\LTXfw{morpho/num.tex}}
+\clearpage
 
 \section{Sloveso}                                \label{sec:morpho_v}
-\input{morpho/v.tex}
-\input{morpho/v_info.tex}
+{\small{\input{morpho/v.tex}}}
+\clearpage
 
 \fi
 
@@ -235,17 +238,21 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 
 % ------------------------------------------------------------- Bibliography -
 \cleardoublepage
-\twocolumn
-\phantomsection
-\addcontentsline{toc}{chapter}{Bibliografie}
-\nocite{*}
-\printbibliography
+\chapter{Bibliografie}
+%\twocolumn
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Bibliografie}
+\begin{multicols}{2}
+\nocite{*}\printbibliography[heading=none]
+\end{multicols}
 
+% ------------------------------------------------------------------ Apendix -
+\cleardoublepage
 \onecolumn
-\pagestyle{empty}
-
+\ifmakeapendix
 \chapter{Apendix: Islandská gramatika}
-%\includepdf[pages={1,2,3,4,5,6}]{gram.pdf}
+\includepdf[pages={1,2,3,4,5,6}]{gram.pdf}
+\fi
 
 % ------------------------------------------------------------------ Barcode -
 % \EANisbn[SC5b] \EANisbn
