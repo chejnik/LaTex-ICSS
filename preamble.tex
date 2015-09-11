@@ -1,7 +1,7 @@
 % ########################################################### DOCUMENT CLASS #
 
 \documentclass[ %draft
-              , demo  % black boxes instead of figures
+             % , demo  % black boxes instead of figures
               , 8pt, c5paper, twoside, openright]{extbook}
 
 %\documentclass[10pt, a4paper, twoside, openright]{extbook}
@@ -34,64 +34,71 @@
   , twocolumn
   }}
 
-% ###################################################### LANGUAGES, ENCODING #
+% ################################################################# LANGUAGES #
 
 \usepackage[icelandic, latin, czech]{babel}
 \usepackage{csquotes}
 
-\usepackage[utf8]{inputenc}
-\DeclareUnicodeCharacter{00A0}{~} % finds hidden non-breakable space
 
+% ################################################################## ENCODING #
+
+\usepackage[utf8]{inputenc}
+
+% Smashing uppercase letters with diacritics
 % ------------------ THIS IS EVIL AND SHOULD NEVER BE DONE -------------------
-% Czech uppercase letters with diacritics:
-\DeclareUnicodeCharacter{00C1}{\strut\smash{\' A}} % Á
-\DeclareUnicodeCharacter{010C}{\strut\smash{\v C}} % Č
-\DeclareUnicodeCharacter{010E}{\strut\smash{\v D}} % Ď
-\DeclareUnicodeCharacter{00C9}{\strut\smash{\' E}} % É
-\DeclareUnicodeCharacter{011A}{\strut\smash{\v E}} % Ě
-\DeclareUnicodeCharacter{00CD}{\strut\smash{\' I}} % Í
-\DeclareUnicodeCharacter{0147}{\strut\smash{\v N}} % Ň
-\DeclareUnicodeCharacter{00D3}{\strut\smash{\' O}} % Ó
-\DeclareUnicodeCharacter{0158}{\strut\smash{\v R}} % Ř
-\DeclareUnicodeCharacter{0160}{\strut\smash{\v S}} % Š
-\DeclareUnicodeCharacter{0164}{\strut\smash{\v T}} % Ť
-\DeclareUnicodeCharacter{00DA}{\strut\smash{\' U}} % Ú
-\DeclareUnicodeCharacter{016E}{\strut\smash{\r U}} % Ů
-\DeclareUnicodeCharacter{00DD}{\strut\smash{\' Y}} % Ý
-\DeclareUnicodeCharacter{017D}{\strut\smash{\v Z}} % Ž
-\DeclareUnicodeCharacter{00D6}{\strut\smash{\" O}} % Ö
-% Icelandic uppercase letters with diacritics: ÁÉÍÓÚÝ (ÐÞÆ) and
+% Don't smash anything if we are on the first run to produce the index
+\IfFileExists{figures.idx}{
+  % Czech uppercase letters with diacritics:
+  \DeclareUnicodeCharacter{00C1}{\strut\smash{\' A}} % Á
+  \DeclareUnicodeCharacter{010C}{\strut\smash{\v C}} % Č
+  \DeclareUnicodeCharacter{010E}{\strut\smash{\v D}} % Ď
+  \DeclareUnicodeCharacter{00C9}{\strut\smash{\' E}} % É
+  \DeclareUnicodeCharacter{011A}{\strut\smash{\v E}} % Ě
+  \DeclareUnicodeCharacter{00CD}{\strut\smash{\' I}} % Í
+  \DeclareUnicodeCharacter{0147}{\strut\smash{\v N}} % Ň
+  \DeclareUnicodeCharacter{00D3}{\strut\smash{\' O}} % Ó
+  \DeclareUnicodeCharacter{0158}{\strut\smash{\v R}} % Ř
+  \DeclareUnicodeCharacter{0160}{\strut\smash{\v S}} % Š
+  \DeclareUnicodeCharacter{0164}{\strut\smash{\v T}} % Ť
+  \DeclareUnicodeCharacter{00DA}{\strut\smash{\' U}} % Ú
+  \DeclareUnicodeCharacter{016E}{\strut\smash{\r U}} % Ů
+  \DeclareUnicodeCharacter{00DD}{\strut\smash{\' Y}} % Ý
+  \DeclareUnicodeCharacter{017D}{\strut\smash{\v Z}} % Ž
+  % Icelandic uppercase letters with diacritics: ÁÉÍÓÚÝ (ÐÞÆ) and
+  \DeclareUnicodeCharacter{00D6}{\strut\smash{\" O}} % Ö
+}{}
 % ------------------ THAT WAS EVIL AND SHOULD NEVER BE DONE ------------------
 
-% ########################################################### FONTS, SYMBOLS #
+% Non-breakable space
+\DeclareUnicodeCharacter{00A0}{~}
+
+% Non-breakable hyphen
+\newcommand*{\nobreakhyphen}{\mbox{-}}
+\DeclareUnicodeCharacter{2011}{\nobreakhyphen}
+
+
+% ############################################################ FONTS, SYMBOLS #
 
 \usepackage[T1]{fontenc}
 
 \usepackage{tgpagella}
+\usepackage[scaled=0.88]{helvet}      % relative scale of the two fonts
+
+\def\phvfamily{\fontfamily{phv}\selectfont}
 
 %\usepackage{stmaryrd}
-% Let's keep this minimal:
+% Let's keep this minimal instead of using the package:
 \DeclareSymbolFont{stmry}{U}{stmry}{m}{n}
 %\SetSymbolFont{stmry}{bold}{U}{stmry}{b}{n}
 \DeclareMathSymbol\shortrightarrow\mathrel{stmry}{"01}
 \DeclareMathSymbol\shortuparrow\mathrel{stmry}{"02}
 
-
-% These seem unused
-\usepackage{dingbat}
-\usepackage{manfnt}
-\usepackage{latexsym}
+% Methinks these are not necessary
+%\usepackage{dingbat}
+%\usepackage{manfnt}
+%\usepackage{latexsym}
 
 \usepackage{pifont}
-
-\usepackage[scaled=0.88]{helvet} % ss
-\def\phvfamily{\fontfamily{phv}\selectfont}
-
-
-
-
-
-
 
 
 
@@ -110,19 +117,16 @@
 \setlength\columnsep    {2\baselineskip}
 \setlength\columnseprule{0.4pt}
 
+% Necessary for baseline alignment
+\topskip=\baselineskip
 \raggedbottom
-
-\topskip=\baselineskip % Baselines aligned to grid
+\setlength\parskip{0pt} % it's better to avoid glue
 
 % Temporarily suppress warnings
 \hbadness=10000
 \vbadness=10000
 
-\setlength\parskip{0pt}               % better avoid glue
-\setlength\emergencystretch{50pt}     % to temporarily settle overf hboxes
-%\renewcommand\baselinestretch{1.0}
-%\setlength\baselineskip{9.6pt}
-
+\setlength\emergencystretch{17pt}
 
 % ######################################################### ASSORTED PACKAGES #
 
@@ -202,7 +206,7 @@
 
 \usepackage{imakeidx}
 
-% index of authors of photographs
+% Index of authors of photographs
 \makeindex
   [ name = figures
   , title = {Seznam autorů fotografií a ilustrací}
@@ -214,7 +218,7 @@
 
 % icelandic rules start
 \usepackage{filecontents}
-\def\mygroup#1{\textbf{#1}}
+\def\mygroup#1{{\bfseries#1}}
 \begin{filecontents*}{style.xdy}
 ;; style.xdy
 (markup-letter-group :open-head "~n\mygroup{" :close-head "}")
@@ -387,7 +391,7 @@
 \newlength\dicfigheight
 \newlength\dicfigskip
 
-\newcommand\dictionaryfigure[3]{ % {filename}{caption}{index entry}
+\newcommand\dicFigure[3]{ % {filename}{caption}{index entry}
   \setlength\fboxsep{0pt}\setlength\fboxrule{0.5pt}
   \def\dicfigbox{\fbox{%
     \adjincludegraphics [ max height = 0.8\columnwidth
@@ -618,14 +622,14 @@ thumb/.style={
 %\BeforeBeginEnvironment{multicols}{\vspace{-\dp\strutbox}}
 
 
-% ######################################################### TABLE OF CONTENTS #
+% ######################################################## TABLE OF CONTENTS #
 \usepackage{titletoc}
 
 \titlecontents {chapter} [0pt] {\addvspace\baselineskip\bfseries}
   {} {} {\titlerule*[2\baselineskip]{}\contentspage}
 
 \titlecontents {section} [\baselineskip] {} {} {}
-  {\titlerule*[2\baselineskip]{}\contentspage}
+  {\titlerule*[1\baselineskip]{.}\contentspage}
 
 
 % #################################################### ASSORTED CUSTOM MACROS #
@@ -634,6 +638,12 @@ thumb/.style={
 \def\textCS#1{\foreignlanguage{czech}{#1}}
 \def\textLA#1{\foreignlanguage{latin}{#1}}
 
+\usepackage{accsupp}
+
+\makeatletter                                                                                                          
+  \def\ACCSUPP@bdc{\special{pdf:code \ACCSUPP@span BDC}}                                                               
+  \def\ACCSUPP@emc{\special{pdf:code EMC}}                                                                             
+\makeatother
 
 \usepackage{pgffor}
 
@@ -652,29 +662,47 @@ thumb/.style={
 \newcommand \dicsymPhoto
   {\includegraphics[keepaspectratio,height=0.65em]{photo_icon}}
 
-\newcommand\dicEntry[1][]
-  {\par\hangpara{0.5\baselineskip}{1}%
-   \markboth{#1}{#1}}
-%\ifx\relax#1\relax\markboth{#2}{#2}\else\markboth{#1}{#1}\fi%
+%\NewDocumentCommand\dicTerm{mo}
+ % {{\phvfamily\bfseries\textIS{#1}}\IfValueT{#2}{, \phvfamily\bfseries\textIS{#2}}}
 
-\newcommand\dicSubEntry{\\\hspace*{-\hangindent}}
+\NewDocumentCommand\dicEntry{o}
+  {\par\hangpara{0.25\baselineskip}{1}%
+   \IfValueT{#1}{\markboth{#1}{#1}}%
+   \ignorespaces}
 
-\NewDocumentCommand\dicTerm{mo}
+\newcommand\dicSubEntry
+  {\\\hspace*{-\hangindent}}
+
+\NewDocumentCommand\textAlt{mm}
+  {\BeginAccSupp{method=pdfstringdef,ActualText={#2}}#1\EndAccSupp{}}
+
+\newcounter{terms}
+
+\NewDocumentCommand\dicStyleIntTerm{m}{\textIS{{\phvfamily\bfseries#1}}}
+\NewDocumentCommand\dicStyleExtTerm{m}{\textIS{\textit{#1}}}
+
+   \NewDocumentCommand\dicTerm{mo}
   {{\phvfamily\bfseries\textIS{#1}}\IfValueT{#2}{, \phvfamily\bfseries\textIS{#2}}}
 
-\newcommand\dicTermList[1]
+  \newcommand\dicTermList[1]
   {\foreach \t [count=\n] in {#1}{\ifnum\n=1\else, \fi\dicTerm{\t}}}
-
+  
 \def\dicIPA#1{\textipa{[#1]}}
 
 \NewDocumentCommand\dicPos{smo}
-  {{\color{darkgreen}\small{\bfseries#1}\IfValueT{#2}{\textsubscript{#2}}}}
+  {{\color{darkgreen}\textbf{\small#2}%
+   \IfValueT{#3}{\nobreak\textsubscript{#3}}}}
 
-\NewDocumentCommand\dicFlx{smo}
-  {{\color{darkgreen}\footnotesize#1\IfValueT{#2}{\textsubscript{#2}}}}
+%\NewDocumentCommand\dicFlx{smo}
+ % {{\color{darkgreen}\footnotesize#1\IfValueT{#2}{\textsubscript{#2}}}}
 
+  \NewDocumentCommand\dicFlx{smo}
+  {{\color{darkgreen}\footnotesize#2%
+   \IfValueT{#3}{\nobreak\textsubscript{#3}}}}
+   
 \newcommand\dicExampleCS[1]{\dicsymExampleCS~\textit{#1}}
 \newcommand\dicExampleIS[1]{\dicsymExampleIS~\textIS{\textit{#1}}}
+
 \NewDocumentCommand\dicLink{sm}
   {\IfBooleanF#1{\dicsymSee~}\dicTerm{#2}}
 \NewDocumentCommand\dicSynonym{sm}
@@ -684,11 +712,15 @@ thumb/.style={
 \NewDocumentCommand\dicCompare{sm}
   {(\IfBooleanF#1{\dicsymCompare~}\textIS{\textit{#2}})}
 
-\newcommand\dicPhraseIS[1]{\textIS{\bfseries#1}}
-\newcommand\dicIdiom[2]
-  {\dicSubEntry{\color{newdev}\dicTerm{#1}} \dicsymIdiom\ \dicPhraseIS{#2}}
-\newcommand\dicProverb[1]
-  {\dicSubEntry\dicsymProverb\ \dicTerm{#1}}
+
+\newcommand\dicPhraseIS[1]{\textIS{\textbf{#1}}}
+
+\NewDocumentCommand\dicIdiom{mo}
+  {\dicSubEntry{\color{newdev}\dicStyleIntTerm{#1} %
+     \IfValueTF{#2}{+ \dicStyleIntTerm{#2} \markboth{#1 + #2}{#1 + #2}}{\markboth{#1}{#1}}}\dicsymIdiom}
+     
+\newcommand\dicProverb
+  {\dicSubEntry\dicsymProverb}
 
 
 
@@ -699,24 +731,16 @@ thumb/.style={
 \newcommand\dicDirectTranslationCS[1]{#1}
 \newcommand\dicIndirectTranslationCS[1]{{\footnotesize#1}}
 
+\usepackage{placeins}
 
-%\newcommand\entry[3][]
-%  {\hangpara{0.5\baselineskip}{1}%
-%   \ifx\relax#1\relax\markboth{#2}{#2}\else\markboth{#1}{#1}\fi%
-%   \dicTerm{#2}\ #3%
-%   \par}
-%
-%\newcommand\devision[1]
-%  {\hspace*{-\hangindent}%
-%   \textIS{\color{newdev}{\phvfamily #1}}}
-%
-\newcommand*{\dicLetter}[1]
-  {\noindent\parbox[t][9\baselineskip][c]{\columnwidth}
-     {\phantomsection\pdfbookmark[1]{#1}{#1}%
-      \centering\HUGE%
-      \MakeUppercase{#1}~\MakeLowercase{#1}%
-      \par\xdef\tpd{\the\prevdepth}}\par\prevdepth\tpd%
-      \expandafter\lettergroup{\MakeLowercase{#1}}}
+\newcommand*{\dicLetter}[2]{%
+  \FloatBarrier\newpage\phantomsection\pdfbookmark[1]{#1}{#2}%
+  \noindent\parbox[b][9\baselineskip][c]{\columnwidth}
+    {\centering\HUGE\strut\smash{\MakeUppercase{#1}~\MakeLowercase{#1}}}%
+      %\par\xdef\tpd{\the\prevdepth}
+      %\par\prevdepth\tpd%
+  \expandafter\lettergroup{\MakeLowercase{#1}}}
+
   
 %tabulky
 \newcommand{\specialcell}[2][l]{%
@@ -780,25 +804,12 @@ thumb/.style={
  \vspace*{1em}                        % I think this is necessary
  \begin{figure}[ht]\centering%
    \setlength\fboxsep{0pt}\setlength\fboxrule{0.5pt}%
-   \foreach \file in \frontcoverimages{
+   \foreach \file in #1{
      \fbox{\includegraphics[width=5.5cm]{\file}}}
  \end{figure}
  \vspace*{\fill}
  \end{center}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 % ###################################################### HYPERREF & PDF INFO #
@@ -824,6 +835,8 @@ thumb/.style={
   , linkcolor=black}
 
 
+% ################################################################# MICROTYPE #
 
+\usepackage[final]{microtype}
 
 
