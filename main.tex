@@ -19,7 +19,9 @@
 % -------------------------------------------------------------- Front cover -
 
 \ifmakecovers
+\covergeometry
   \makecoverwith\frontcoverimages
+\restoregeometry  
 \fi
 
 
@@ -269,7 +271,9 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 
 \ifmakecovers
   \cleardoublepage\null\clearpage % inner side of the cover
+\covergeometry  
   \makecoverwith\backcoverimages
+\restoregeometry  
 \fi
 
 \end{document}
