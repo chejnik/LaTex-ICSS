@@ -24,3 +24,11 @@ biber main
 pdflatex main
 pdflatex main
 
+# Copy and rename pdf file and open it
+file='ICSS'
+end='.pdf'
+cdate=`date +%Y-%m-%d`
+cp main.pdf $file-$cdate-$end
+evince $file-$cdate-$end
+
+#evince main.pdf
