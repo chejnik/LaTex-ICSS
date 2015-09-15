@@ -2,14 +2,14 @@
 
 \input{preamble}
 
-\newif\ifmakecovers        \makecoversfalse
-\newif\ifmakefrontmatter   \makefrontmatterfalse
-\newif\ifinputintroduction \inputintroductionfalse
-\newif\ifinputletters      \inputlettersfalse
-\newif\ifinputphon         \inputphonfalse
+\newif\ifmakecovers        \makecoverstrue
+\newif\ifmakefrontmatter   \makefrontmattertrue
+\newif\ifinputintroduction \inputintroductiontrue
+\newif\ifinputletters      \inputletterstrue
+\newif\ifinputphon         \inputphontrue
 \newif\ifinputmorpho       \inputmorphotrue
-\newif\ifmakebackmatter    \makebackmatterfalse
-\newif\ifmakeapendix \makeapendixfalse
+\newif\ifmakebackmatter    \makebackmattertrue
+\newif\ifmakeapendix \makeapendixtrue
 
 % ################################################################# DOCUMENT #
 
@@ -195,27 +195,26 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 
 \chapter{Morfologický klíč}                      \label{sec:morpho}
 
-%\section{Podstatné jméno, rod mužský}            \label{sec:morpho_m}
-% {\small\LTXfw{morpho/m}}
-%\clearpage
+\section{Podstatné jméno, rod mužský}            \label{sec:morpho_m}
+{\small\LTXfw{morpho/m}}
+\clearpage
 
-%\section{Podstatné jméno, rod ženský}            \label{sec:morpho_f}
-% {\small\LTXfw{morpho/f}}
-%\clearpage
+\section{Podstatné jméno, rod ženský}            \label{sec:morpho_f}
+{\small\LTXfw{morpho/f}}
+\clearpage
 
-%\section{Podstatné jméno, rod střední}           \label{sec:morpho_n}
-% {\small\LTXfw{morpho/n}}
-%\clearpage
+\section{Podstatné jméno, rod střední}           \label{sec:morpho_n}
+{\small\LTXfw{morpho/n}}
+\clearpage
 
-%\section{Přídavné jméno}                         \label{sec:morpho_adj}
-% {\small\LTXfw{morpho/adj}}
-%\clearpage
+\section{Přídavné jméno}                         \label{sec:morpho_adj}
+{\small\LTXfw{morpho/adj}}
+\clearpage
 
-%\section{Zájmeno}                                \label{sec:morpho_pron}
-%{\small\LTXfw{morpho/pron}}
-% \input{morpho/pron2}
-%\clearpage
-
+\section{Zájmeno}                                \label{sec:morpho_pron}
+{\small\LTXfw{morpho/pron}}
+ \input{morpho/pron2}
+\clearpage
 
 \section{Číslovka}                               \label{sec:morpho_num}
  {\small\LTXfw{morpho/num}}

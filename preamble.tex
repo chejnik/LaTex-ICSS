@@ -153,6 +153,9 @@
 \usepackage{pagecolor}
 \usepackage{afterpage}                 % Used in coloring trick for covers
 \usepackage{pdfpages}
+\makeatletter			       
+\renewcommand\PLS@Rotate[1]{}          % this command prevents pdflscape 
+\makeatother                           % to rotate pages
 
 \usepackage{multirow}
 \usepackage{multicol}
