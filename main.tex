@@ -5,7 +5,7 @@
 \newif\ifmakecovers        \makecoverstrue
 \newif\ifmakefrontmatter   \makefrontmattertrue
 \newif\ifinputintroduction \inputintroductiontrue
-\newif\ifinputletters      \inputletterstrue
+\newif\ifinputletters      \inputlettersfalse
 \newif\ifinputphon         \inputphontrue
 \newif\ifinputmorpho       \inputmorphotrue
 \newif\ifmakebackmatter    \makebackmattertrue
@@ -207,23 +207,25 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
  {\small\LTXfw{morpho/n}}
 \clearpage
 
-\section{Přídavné jméno}                         \label{sec:morpho_adj}
- {\small\LTXfw{morpho/adj}}
-\clearpage
+%\section{Přídavné jméno}                         \label{sec:morpho_adj}
+% {\small\LTXfw{morpho/adj}}
+%\clearpage
 
 \section{Zájmeno}                                \label{sec:morpho_pron}
 {\small\LTXfw{morpho/pron}}
+ \input{morpho/pron2}
 \clearpage
+
 
 \section{Číslovka}                               \label{sec:morpho_num}
  {\small\LTXfw{morpho/num}}
 \clearpage
 
-\begin{landscape}
-\section{Sloveso}                                \label{sec:morpho_v}
-{\small\LTXfw{morpho/v}}
+%\begin{landscape}
+%\section{Sloveso}                                \label{sec:morpho_v}
+%{\small\LTXfw{morpho/v}}
 
-\end{landscape}
+%\end{landscape}
 
 \clearpage
 
