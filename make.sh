@@ -28,7 +28,7 @@ pdflatex main
 file='ICSS'
 end='.pdf'
 cdate=`date +%Y-%m-%d`
-cp main.pdf $file-$cdate-$end
-evince $file-$cdate-$end
+cp main.pdf $file-$cdate$end
+evince $file-$cdate$end
 
 #evince main.pdf
