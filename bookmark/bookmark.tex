@@ -1,0 +1,163 @@
+\documentclass[8pt]{extbook}
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\usepackage[paper=c5paper, paperwidth=4.5cm, top=0cm, headsep=0cm, bottom=0cm, left=0cm, right=0cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage[icelandic, latin, czech]{babel}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{00A0}{~} % finds hidden non-breakable space
+\usepackage[T1]{fontenc}
+
+\usepackage{enumitem}
+\usepackage{hanging}
+\usepackage{makeidx}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{tipa}
+\usepackage{fix2col}
+\usepackage{dingbat}
+\usepackage{manfnt}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{pifont}
+\usepackage{titlesec}
+\usepackage[labelformat=empty]{caption}
+
+\usetikzlibrary{calc}
+
+\usepackage{graphicx}
+\usepackage{color}
+
+%\usepackage{lscape} % for printing
+\usepackage{pdflscape} %for viewing
+
+                % subscript
+\usepackage{pagecolor}
+\usepackage{afterpage}    
+
+\usepackage{adjustbox} % loads also graphicx
+
+\graphicspath{%
+  {/home/chejnik/Dokumenty/hvalur.org/images/biolib/full/}%
+  {/home/chejnik/Dokumenty/hvalur.org/images/uploaded_files/}}
+
+% ###################################################### HYPERREF & PDF INFO #
+
+% unicode neccessary so that national characters in hypersetup appear ok
+\usepackage[pdftex, unicode, hyperfootnotes=false]{hyperref}
+
+% hyperlinks in black
+\makeatletter
+\let\Hy@linktoc\Hy@linktoc@none
+\makeatother
+
+\hypersetup
+  { pdftitle={Záložka pro Islandsko-český studijní slovník}
+  , pdfauthor={Aleš Chejn, Jón Gíslason, Ján Zaťko}
+  , pdfsubject={záložka pro Islandsko-český studijní slovník}
+  , pdfkeywords={záložka, Islandsko-český studijní slovník}
+  , bookmarks=true
+  , colorlinks=true
+  , citecolor=black
+  , urlcolor=darkgreen
+  , linkcolor=black}
+  
+% #################################################################### COLORS #
+
+\definecolor{darkgreen}{rgb}{0.4, 0.01, 0.24}
+\definecolor{title}{RGB}{16, 13, 32}
+
+% #################################################################### COVERS #
+
+\newcommand*{\frontcoverimages}{%
+  ds_image_blaberjalyng_0_2.jpg,
+  ds_image_lundi_0_1.jpg,
+  ds_image_hestur_0_1.jpg,
+  ds_image_hrafnafifa_0_2.jpg,
+  ds_image_baldursbra_0_1.jpg,
+  20948.jpg}
+
+\newcommand*{\backcoverimages}{%
+  ds_image_spoi_0_1.jpg,
+  ds_image_mosalyng_0_1.jpg,
+  ds_image_blaklukkulyng_0_1.jpg,
+  20787.jpg,
+  ds_image_ufsi_0_2.jpg,
+  ds_image_gullbra_0_1.jpg,
+  ds_image_islandsfifill_0_2.jpg,
+  21137.jpg}
+
+\newcommand\makebookmarkfront{
+ \begin{landscape}
+\begin{center}
+\vspace*{\fill}
+ {\Huge\scshape\color{white}%
+   \dictnameCZ\\\dictnameIS}
+ \vspace*{\fill}
+\end{center}
+\end{landscape}
+\clearpage
+ }
+ 
+ 
+\def\dictnameCZ{islandsko-český studijní slovník}
+\def\dictnameIS{íslensk-tékknesk stúdentaorðabók}
+ \renewcommand{\baselinestretch}{0.7}
+ 
+ \newcommand\makebookmarkfrontd{
+ \vspace*{0.3cm}%{\fill}
+  \begin{figure}[ht]\centering%
+   \setlength\fboxsep{0pt}\setlength\fboxrule{0pt}%
+    \fbox{\includegraphics[width=4cm]{ds_image_hvalur_0_1.jpg}}
+ \end{figure}
+ 
+ \vspace*{0.90cm}%{\fill}
+
+%\begin{minipage}{0.6\textwidth}
+
+ \begin{center}\Huge\scshape\color{white}%
+   islandsko-\\
+   český\\
+   studijní\\
+   slovník
+  \end{center}
+   
+    \vspace*{0.1cm}%{\fill}
+    
+   \begin{center}\Huge\scshape\color{white}%
+   íslensk-\\
+   tékknesk\\
+   stúdenta-\\
+   orðabók
+   \end{center}
+    
+%\end{minipage}
+
+
+\vspace*{10cm}%{\fill}
+
+\begin{center}
+{\color{white}www.hvalur.org}
+\end{center}
+
+ \vspace*{\fill}
+\clearpage
+ }
+
+\newcommand\makebookmarkback[1]{
+ \begin{figure}[ht]\centering%
+   \setlength\fboxsep{0pt}\setlength\fboxrule{0pt}%
+   \foreach \file in #1{
+     \fbox{\includegraphics[width=4.6cm]{\file}}
+     }
+ \end{figure}
+}
+
+% ############################### Document
+ \begin{document}
+ \pagenumbering{gobble}
+    \pagecolor{title}
+    \makebookmarkfrontd{}
+  \makebookmarkback\frontcoverimages
+ \end{document}
