@@ -341,7 +341,8 @@
 %%%   {\oldtabularx{#1}{#2}}
 %%%   {\oldendtabularx}
 
-% ------------------------------------------------- I HAVE NO CLUE WHAT THIS IS
+% ######################################################### czech babel vs cmidrule
+% ###################################### http://tex.stackexchange.com/a/112001/8380
 \begingroup
   \makeatletter
   \catcode`\-=\active
@@ -359,6 +360,51 @@
     \noalign{\ifnum0=`}\fi\futurenonspacelet\@tempa\@xcmidrule}
   }
 \endgroup
+
+% macro that supress cmidrule at page brake
+% http://tex.stackexchange.com/questions/110548/using-longtable-with-cmidrule-page-breaking-issues
+\makeatletter
+\def\LT@output{%
+  \ifnum\outputpenalty <-\@Mi
+    \ifnum\outputpenalty > -\LT@end@pen
+      \LT@err{floats and marginpars not allowed in a longtable}\@ehc
+    \else
+      \setbox\z@\vbox{\unvbox\@cclv}%
+      \ifdim \ht\LT@lastfoot>\ht\LT@foot
+        \dimen@\pagegoal
+        \advance\dimen@-\ht\LT@lastfoot
+        \ifdim\dimen@<\ht\z@
+          \setbox\@cclv\vbox{\unvbox\z@
+\copy\LT@foot\vss}%
+          \@makecol
+          \@outputpage
+          \setbox\z@\vbox{\box\LT@head}%
+        \fi
+      \fi
+      \global\@colroom\@colht
+      \global\vsize\@colht
+      \vbox
+        {\unvbox\z@
+\box\ifvoid\LT@lastfoot\LT@foot\else\LT@lastfoot\fi}%
+    \fi
+  \else
+    \setbox\@cclv\vbox{\unvbox\@cclv
+
+\setbox0\lastbox
+\ifdim\ht0=0.29999pt \unskip % hope that was a cline we threw away
+\else
+\nointerlineskip
+\box0     % put it back, whatever it was
+\fi
+
+\copy\LT@foot\vss}%
+    \@makecol
+    \@outputpage
+      \global\vsize\@colroom
+    \copy\LT@head\nobreak
+  \fi}
+
+\makeatother
 
 % These values ensure that for top, mid and bottom rules
 % space above + rule width + space below = baselineskip
