@@ -11,13 +11,14 @@
 
 \usepackage%[showframe]
            {geometry}
-
+           
+\newif\ifscreen \screenfalse
 % Basic geometry of document
 \geometry
   { headsep    =   \baselineskip
   , textwidth  = 42\baselineskip
   , textheight = 60\baselineskip
-  , hmarginratio = 2:3
+  , hmarginratio = \ifscreen 1:1\else 2:3\fi
   , vmarginratio = 2:3
   , bindingoffset = 0cm
   , onecolumn
@@ -27,7 +28,7 @@
 \newcommand\dictionarygeometry{\newgeometry
   { textwidth  = 42\baselineskip
   , textheight = 60\baselineskip
-  , hmarginratio = 2:3
+  , hmarginratio = \ifscreen 1:1\else 2:3\fi
   , vmarginratio = 3:2
   , bindingoffset = 0cm
   , twocolumn

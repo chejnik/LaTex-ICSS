@@ -10,13 +10,15 @@
 \newif\ifinputmorpho       \inputmorphotrue
 \newif\ifmakebackmatter    \makebackmattertrue
 
-% PDF  
+% 1. PDF (for printing)  
 % a) searchable value, b) no apendix, c) version= PDF d) no ISBN and no ISBN bar
 % e) automatic rotation of landscape pages, f) no author of Icelandic Grammer
-% PRINTED
+% 2. PDF (for viewing offline and searching) + screen (horizontal ratio 1:1) 
+% 3. PRINTED
 % a) no searchable value, b) apendix, c) version ISBN d) ISBN bar
 % e) no rotation of landscape pages
-\newif\ifPDF \PDFtrue
+
+\newif\ifPDF \PDFfalse
 
 \ifPDF
 \else
@@ -24,6 +26,8 @@
 \renewcommand\PLS@Rotate[1]{}          % this command prevents pdflscape 
 \makeatother                           % to rotate pages
 \fi
+
+
 % ################################################################# DOCUMENT #
 
 \begin{document}
