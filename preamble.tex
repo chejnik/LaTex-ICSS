@@ -153,9 +153,6 @@
 \usepackage{pagecolor}
 \usepackage{afterpage}                 % Used in coloring trick for covers
 \usepackage{pdfpages}
-%\makeatletter			       
-%\renewcommand\PLS@Rotate[1]{}          % this command prevents pdflscape 
-%\makeatother                           % to rotate pages
 
 \usepackage{multirow}
 \usepackage{multicol}
@@ -725,6 +722,10 @@ thumb/.style={
 \NewDocumentCommand\dicEntry{o}
   {\par\hangpara{0.25\baselineskip}{1}%
    \IfValueT{#1}{\markboth{#1}{#1}}%
+    \ifPDF
+    \settowidth{\eyja}{#1}%
+  \makebox[\eyja]{\color{white}#1}\hspace{-\eyja}%
+  \fi
    \ignorespaces}
 
 \newcommand\dicSubEntry

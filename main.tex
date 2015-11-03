@@ -9,8 +9,21 @@
 \newif\ifinputphon         \inputphontrue
 \newif\ifinputmorpho       \inputmorphotrue
 \newif\ifmakebackmatter    \makebackmattertrue
-\newif\ifmakeapendix \makeapendixtrue
 
+% PDF  
+% a) searchable value, b) no apendix, c) version= PDF d) no ISBN and no ISBN bar
+% e) automatic rotation of landscape pages, f) no author of Icelandic Grammer
+% PRINTED
+% a) no searchable value, b) apendix, c) version ISBN d) ISBN bar
+% e) no rotation of landscape pages
+\newif\ifPDF \PDFtrue
+
+\ifPDF
+\else
+\makeatletter			       
+\renewcommand\PLS@Rotate[1]{}          % this command prevents pdflscape 
+\makeatother                           % to rotate pages
+\fi
 % ################################################################# DOCUMENT #
 
 \begin{document}
@@ -27,7 +40,7 @@
 
 % ============================================================= FRONT MATTER =
 
-\ifmakefrontmatter 
+\ifmakefrontmatter
 
 % ------------------------------------------------------------------ Patitul -
 
@@ -58,8 +71,11 @@
 \noindent\begin{minipage}[t][\textheight][t]{\textwidth}
 Autoři \textit{Islandsko-českého studijního slovníku}:\\
   \textbf{Aleš Chejn, Ján Zaťko, Jón Gíslason}\\[\baselineskip]
+\ifPDF
+\else
 Autor \textit{Islandské gramatiky}:\\
   \textbf{Vojtěch Kupča}\\[\baselineskip]
+\fi
 Poděkování:\\
   \textbf{Dorotě Nierychlewské-Chejn, Jiřině Hanzlové, Jiřině Chejnové,
           Simoně Petrásové,\\ Petru Mikešovi, Vojtěchu Kupčovi, 
@@ -73,7 +89,11 @@ Slovenské republice a na Islandu poskytl:\\
 Licence: \textbf{GNU Free Documentation License}\\
 Sazba: \textbf{Paolo Brasolin} v prostředí  \textbf\LaTeX\\
   Zvláštní poděkování patří uživatelům  \textbf{\TeX\ - \LaTeX\ Stack Exchange}\\[\baselineskip]
+\ifPDF
+Verze: PDF verze \textit{Islandsko-českého studijního slovníku} volně dostupná na \url{www.hvalur.org}\\[\baselineskip]
+\else
 \textbf\ISBN\\[\baselineskip]
+\fi
 Design pevné vazby: \textbf{Dorota Nierychlewska-Chejn, Jiřina Chejnová}\\
 Tisk: \textbf{Tiskárna Melmen, Pardubice}\\
 Heslová část vysázena patkovým fontem \TeX\ Gyre Pagella,
@@ -160,6 +180,7 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 %  \input{letters/\l.tex}}
 
 \input{letters}
+%\input{letters_example}
 
 \restoregeometry
 \pagestyle{plain}
@@ -257,7 +278,8 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 % ------------------------------------------------------------------ Apendix -
 \cleardoublepage
 \onecolumn
-\ifmakeapendix
+\ifPDF
+\else
 \chapter{Apendix: Islandská gramatika}
 \includepdf[pages={1,2,3,4,5,6}, turn=false]{gram.pdf}
 \fi
@@ -266,9 +288,11 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 % \EANisbn[SC5b] \EANisbn
 \pagenumbering{gobble}
 \cleardoublepage\null\clearpage % clear to verso
+\ifPDF
+\else
 \vspace*\fill
 \EANisbn[SC3]
-
+\fi
 \fi
 
 % --------------------------------------------------------------- Back cover -
