@@ -2,32 +2,6 @@
 
 \input{preamble}
 
-\newif\ifmakecovers        \makecoverstrue
-\newif\ifmakefrontmatter   \makefrontmattertrue
-\newif\ifinputintroduction \inputintroductiontrue
-\newif\ifinputletters      \inputletterstrue
-\newif\ifinputphon         \inputphontrue
-\newif\ifinputmorpho       \inputmorphotrue
-\newif\ifmakebackmatter    \makebackmattertrue
-
-% 1. PDF (for printing)  
-% a) searchable value, b) no apendix, c) version= PDF d) no ISBN and no ISBN bar
-% e) automatic rotation of landscape pages, f) no author of Icelandic Grammer
-% 2. PDF (for viewing offline and searching) + screen (horizontal ratio 1:1) 
-% 3. PRINTED
-% a) no searchable value, b) apendix, c) version ISBN d) ISBN bar
-% e) no rotation of landscape pages
-
-\newif\ifPDF \PDFtrue
-
-\ifPDF
-\else
-\makeatletter			       
-\renewcommand\PLS@Rotate[1]{}          % this command prevents pdflscape 
-\makeatother                           % to rotate pages
-\fi
-
-
 % ################################################################# DOCUMENT #
 
 \begin{document}
@@ -197,9 +171,8 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 
 \cleardoublepage
 
-\chapter{Fonetika}                               \label{sec:phon}
+\chapter{Seznam islandských fonémů}              \label{sec:phon_phonems}
 
-\section{Seznam islandských fonémů}              \label{sec:phon_phonems}
 \input{phon/phonems}
 \clearpage
 
