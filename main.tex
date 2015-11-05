@@ -176,7 +176,7 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 \pagestyle{myheadings}
 
 %\newcommand*{\alphabet}{%
-%  a%,aa,b,c,d,dd,e,ee,f,g,h,i,ii,j,k,l,m,
+%  a,aa,b,c,d,dd,e,ee,f,g,h,i,ii,j,k,l,m,
 %  %n,o,oo,p,r,s,t,u,uu,v,w,y,yy,th,ae,oe
 %  }
 
@@ -290,9 +290,9 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 
 % ------------------------------------------------------------------ Barcode -
 % \EANisbn[SC5b] \EANisbn
+\pagenumbering{gobble}
 \ifPDF
 \else
-\pagenumbering{gobble}
 \cleardoublepage\null\clearpage % clear to verso
 \vspace*\fill
 \EANisbn[SC3]
