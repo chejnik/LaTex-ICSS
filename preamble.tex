@@ -1,7 +1,7 @@
 % ########################################################### DOCUMENT CLASS #
 \documentclass[ %draft
              % , demo  % black boxes instead of figures
-              , 8pt, c5paper, twoside, openright]{extbook}
+              , 8pt, a4paper, twoside, openright]{extbook}
 
 %\documentclass[10pt, a4paper, twoside, openright]{extbook}
 %\documentclass[ 8pt, B5paper, twoside, openright]{extbook} 
@@ -21,7 +21,7 @@
 \newif\ifinputintroduction \inputintroductiontrue
 \newif\ifinputletters      \inputletterstrue
 \newif\ifinputphon         \inputphontrue
-\newif\ifinputmorpho       \inputmorphotrue
+\newif\ifinputmorpho       \inputmorphofalse
 \newif\ifmakebackmatter    \makebackmattertrue
 
 \newif\ifPRINTHOUSE 	   \PRINTHOUSEtrue
@@ -77,6 +77,9 @@
   , vmarginratio = 2:3
   , bindingoffset = 0cm
   , onecolumn
+  , layout=c5paper
+  , layoutoffset = {2cm,2cm}
+  , showcrop
   }
 
 % Geometry of the dictionary section
@@ -86,7 +89,10 @@
   , hmarginratio = \ifscreen 1:1\else 2:3\fi
   , vmarginratio = 3:2
   , bindingoffset = 0cm
-  , twocolumn
+  , twocolumn,
+  , layout=c5paper
+  , layoutoffset = {2cm,2cm}
+  , showcrop
   }}
 
  % Geometry of the cover pages
@@ -97,7 +103,12 @@
   , vmarginratio = 2:3
   , bindingoffset = 0cm
   , onecolumn
+  , layout=c5paper
+  , layoutoffset = {2cm,2cm}
+  , showcrop
   }} 
+
+
 % ################################################################# LANGUAGES #
 
 \usepackage[icelandic, latin, czech]{babel}
@@ -247,7 +258,7 @@
   \end{tikzpicture}}
 
 % Draw a baseline grid on every page
-%\AddToShipoutPicture{\drawbaselinegrid}
+\AddToShipoutPicture{\drawbaselinegrid}
 
 
 % ################################################################## METADATA #
@@ -624,9 +635,9 @@
 \setcounter{lettersum}{34}
 % some margin settings
 \newlength{\thumbtopmargin}
-\setlength{\thumbtopmargin}{1cm}
+\setlength{\thumbtopmargin}{3cm} %1cm
 \newlength{\thumbbottommargin}
-\setlength{\thumbbottommargin}{2.5cm}
+\setlength{\thumbbottommargin}{6cm} %2.5cm
 % calculate the box height by dividing the page height
 \newlength{\thumbheight}
 \pgfmathsetlength{\thumbheight}{%
@@ -636,7 +647,7 @@
 }
 % box width
 \newlength{\thumbwidth}
-\setlength{\thumbwidth}{0.5cm}
+\setlength{\thumbwidth}{2cm} %0.5cm
 % style the boxes
 \tikzset{
 thumb/.style={
