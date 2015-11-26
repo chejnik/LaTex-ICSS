@@ -77,8 +77,9 @@
   , vmarginratio = 2:3
   , bindingoffset = 0cm
   , onecolumn
-  , layout=c5paper
-  , layoutoffset = {2cm,2cm}
+  , layout=c5paper,
+  , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
+  , layoutvoffset = 2cm
   , showcrop
   }
 
@@ -91,7 +92,8 @@
   , bindingoffset = 0cm
   , twocolumn,
   , layout=c5paper
-  , layoutoffset = {2cm,2cm}
+  , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
+  , layoutvoffset = 2cm
   , showcrop
   }}
 
@@ -104,7 +106,8 @@
   , bindingoffset = 0cm
   , onecolumn
   , layout=c5paper
-  , layoutoffset = {2cm,2cm}
+ , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
+  , layoutvoffset = 2cm
   , showcrop
   }} 
 
