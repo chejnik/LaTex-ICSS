@@ -22,8 +22,8 @@
 \newif\ifmakebackmatter    \makebackmattertrue
 \newif\ifshowcrop           \showcroptrue
 
-\newif\ifPRINTHOUSE 	   \PRINTHOUSEtrue
-\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
+\newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
+\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
 
 %versions
@@ -82,7 +82,7 @@
   , a4paper 
   , layout=c5paper,
   , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
-  , layoutvoffset = 2cm
+   , layoutvoffset=\dimexpr(\paperheight-\csname Gm@layoutheight\endcsname)/2\relax
   , showcrop
   }
 \else
@@ -110,7 +110,7 @@
   , a4paper 
   , layout=c5paper
   , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
-  , layoutvoffset = 2cm
+   , layoutvoffset=\dimexpr(\paperheight-\csname Gm@layoutheight\endcsname)/2\relax
   , showcrop
   }}
    % Geometry of the cover pages
@@ -123,7 +123,7 @@
   , onecolumn
   , layout=c5paper
  , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
-  , layoutvoffset = 2cm
+   , layoutvoffset=\dimexpr(\paperheight-\csname Gm@layoutheight\endcsname)/2\relax
   , showcrop
   }} 
 \else
@@ -667,6 +667,79 @@
 \or color11\or color12\or color13\or color14\or color1\or color2\or color3\or color4\or color5\or color6\or color7\or color8\or color9%
 \or color10\or color11\or color12\or color13\or color14\or color1\or color2\or color3\or color4\or color5\or color6\else color7\or color8\or color9\or color10\or color11\or color12\fi}
 
+\ifshowcrop
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{letternum}
+\newcounter{lettersum}                 \setcounter{lettersum}{34}
+% these margins separate top thumb from top of page and last thumb from
+% bottom of page. BEWARE, it's from top of the (cut out) page, not the folio!
+\newlength{\thumbtopmargin}            \setlength{\thumbtopmargin}{1cm}
+\newlength{\thumbbottommargin}         \setlength{\thumbbottommargin}{1cm}
+\newlength{\thumbwidth}                \setlength{\thumbwidth}{1cm}
+\newlength{\thumbheight}
+\pgfmathsetlength{\thumbheight}%
+  {(\csname Gm@layoutheight\endcsname-\thumbtopmargin-\thumbbottommargin)/\value{lettersum}}
+% inner xsep of letter from box margin
+\newlength{\thumbsep}                  \setlength{\thumbsep}{.25cm}
+% overlap over cutting line
+\newlength{\thumboverlap}              \setlength{\thumboverlap}{.5cm}
+
+\tikzset{
+  thumb/.style={
+    text=white,
+    outer sep=0pt,
+    inner xsep=\thumbsep,
+    minimum height=\thumbheight,
+    text width=\thumbwidth-2\thumbsep,
+    font=\sffamily\bfseries,},
+  thumb east/.style={thumb,
+    xshift=\dimexpr(+\thumboverlap-\paperwidth+\csname Gm@layoutwidth\endcsname)/2\relax,
+    align=left,anchor=north east,},
+  thumb west/.style={thumb,
+    xshift=\dimexpr(-\thumboverlap+\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax,
+    align=right,anchor=north west,},
+}
+
+\def\thumbnew{}
+\def\thumbold{}
+\usepackage{everypage}
+\AddEverypageHook{\if\relax\thumbnew\relax\xdef\thumbnew{\thumbold}\fi}
+
+\def\ethumbs#1,#2\relax%
+  {\if\relax#1\relax\else\eventhumb{#1}\fi%
+   \if\relax#2\relax\else\ethumbs#2\relax\fi%
+   \gdef\thumbnew{}%
+   \gdef\thumbold{#1,}}
+
+\def\othumbs#1,#2\relax%
+  {\if\relax#1\relax\else\oddthumb{#1}\fi%
+   \if\relax#2\relax\else\othumbs#2\relax\fi%
+   \gdef\thumbold{#1,}%
+   \gdef\thumbnew{}}
+
+\newcommand{\drawthumb}[2]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [thumb #2, fill=\BoxColor{#1}]
+       at ($(current page.north #2)-%
+            (0,\csname Gm@layoutvoffset\endcsname+\thumbtopmargin-\thumbheight+%
+               #1*\thumbheight)$) {\csname Let#1\endcsname};
+   \end{tikzpicture}}
+
+\newcommand{\oddthumb} [1]{\drawthumb{#1}{west}}
+\newcommand{\eventhumb}[1]{\drawthumb{#1}{east}}
+
+\newcommand{\lettergroup}[1]%
+  {\refstepcounter{letternum}%
+   \expandafter\gdef\csname Let\theletternum\endcsname{#1}%
+   \xdef\thumbnew{\theletternum,\thumbnew}%
+   \fancyhead[LO]{\phvfamily\bfseries\rightmark%
+     \expandafter\ethumbs\thumbnew\relax\relax\relax}%
+   \fancyhead[RE]{\phvfamily\bfseries\leftmark%
+     \expandafter\othumbs\thumbnew\relax\relax\relax}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\else
 % THUMB INDEXES
 % new counter to hold the current number of the letter to determine the vertical position
 \newcounter{letternum}
@@ -741,7 +814,7 @@ thumb/.style={
   \fancyhead[RE]{\phvfamily\bfseries\leftmark%
     \expandafter\othumbs\thumbnew\relax\relax\relax}%
 }
-
+\fi
 
 % ############################################################## LOCALIZATION #
 
