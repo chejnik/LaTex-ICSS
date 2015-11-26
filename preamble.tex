@@ -1,10 +1,7 @@
 % ########################################################### DOCUMENT CLASS #
 \documentclass[ %draft
              % , demo  % black boxes instead of figures
-              , 8pt, c5paper, twoside, openright]{extbook}
-
-%\documentclass[10pt, a4paper, twoside, openright]{extbook}
-%\documentclass[ 8pt, B5paper, twoside, openright]{extbook} 
+              , 8pt, twoside, openright]{extbook}
 
 % ########################################################## AND CONTROL PANEL #
 
@@ -23,9 +20,10 @@
 \newif\ifinputphon         \inputphontrue
 \newif\ifinputmorpho       \inputmorphotrue
 \newif\ifmakebackmatter    \makebackmattertrue
+\newif\ifshowcrop           \showcroptrue
 
-\newif\ifPRINTHOUSE 	   \PRINTHOUSEtrue
-\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
+\newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
+\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
 
 %versions
@@ -35,6 +33,7 @@
 \PDFfalse
 \PDFrotatefalse
 \PDFsearchvaluefalse
+\showcroptrue
 \fi
 
 %PDFSEARCH
@@ -43,6 +42,7 @@
 \PDFtrue
 \PDFrotatetrue
 \PDFsearchvaluetrue
+\showcropfalse
 \fi
 
 %PDFPRINT
@@ -51,6 +51,7 @@
 \PDFtrue
 \PDFrotatefalse
 \PDFsearchvaluefalse
+\showcropfalse
 \fi
 
 % 1. PDF (for printing)  
@@ -60,6 +61,7 @@
 % 3. PRINTHOUSE
 % a) no searchable value, b) apendix, c) version ISBN d) ISBN bar
 % e) no rotation of landscape pages, f)urllinkcolor black
+% f) A4 paper dimentions, C5 layout, shows cropping marks
 
 % ########################################################## PAGE GEOMETRIES #
 
@@ -67,7 +69,7 @@
            {geometry}
            
 
-
+\ifshowcrop
 % Basic geometry of document
 \geometry
   { headsep    =   \baselineskip
@@ -77,8 +79,26 @@
   , vmarginratio = 2:3
   , bindingoffset = 0cm
   , onecolumn
+  , a4paper 
+  , layout=c5paper,
+  , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
+  , layoutvoffset = 2cm
+  , showcrop
   }
+\else
+\geometry
+  { headsep    =   \baselineskip
+  , textwidth  = 42\baselineskip
+  , textheight = 60\baselineskip
+  , hmarginratio = \ifscreen 1:1\else 2:3\fi
+  , vmarginratio = 2:3
+  , bindingoffset = 0cm
+  , onecolumn,
+  , c5paper
+  }
+\fi
 
+\ifshowcrop
 % Geometry of the dictionary section
 \newcommand\dictionarygeometry{\newgeometry
   { textwidth  = 42\baselineskip
@@ -87,9 +107,13 @@
   , vmarginratio = 3:2
   , bindingoffset = 0cm
   , twocolumn
+  , a4paper 
+  , layout=c5paper
+  , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
+  , layoutvoffset = 2cm
+  , showcrop
   }}
-
- % Geometry of the cover pages
+   % Geometry of the cover pages
 \newcommand\covergeometry{\newgeometry
   { textwidth  = 42\baselineskip
   , textheight = 60\baselineskip
@@ -97,7 +121,34 @@
   , vmarginratio = 2:3
   , bindingoffset = 0cm
   , onecolumn
+  , layout=c5paper
+ , layouthoffset=\dimexpr(\paperwidth-\csname Gm@layoutwidth\endcsname)/2\relax
+  , layoutvoffset = 2cm
+  , showcrop
   }} 
+\else
+% Geometry of the dictionary section
+\newcommand\dictionarygeometry{\newgeometry
+  { textwidth  = 42\baselineskip
+  , textheight = 60\baselineskip
+  , hmarginratio = \ifscreen 1:1\else 2:3\fi
+  , vmarginratio = 3:2
+  , bindingoffset = 0cm
+  , twocolumn,
+  , c5paper
+  }}
+   % Geometry of the cover pages
+\newcommand\covergeometry{\newgeometry
+  { textwidth  = 42\baselineskip
+  , textheight = 60\baselineskip
+  , hmarginratio = 1:1
+  , vmarginratio = 2:3
+  , bindingoffset = 0cm
+  , onecolumn
+  , c5paper
+  }} 
+\fi
+
 % ################################################################# LANGUAGES #
 
 \usepackage[icelandic, latin, czech]{babel}
@@ -247,7 +298,7 @@
   \end{tikzpicture}}
 
 % Draw a baseline grid on every page
-%\AddToShipoutPicture{\drawbaselinegrid}
+% \AddToShipoutPicture{\drawbaselinegrid}
 
 
 % ################################################################## METADATA #
@@ -624,9 +675,9 @@
 \setcounter{lettersum}{34}
 % some margin settings
 \newlength{\thumbtopmargin}
-\setlength{\thumbtopmargin}{1cm}
+\setlength{\thumbtopmargin}{\ifshowcrop 3cm\else 1.5cm\fi} %1cm
 \newlength{\thumbbottommargin}
-\setlength{\thumbbottommargin}{2.5cm}
+\setlength{\thumbbottommargin}{\ifshowcrop 6cm\else 2cm\fi} %2.5cm
 % calculate the box height by dividing the page height
 \newlength{\thumbheight}
 \pgfmathsetlength{\thumbheight}{%
@@ -636,7 +687,7 @@
 }
 % box width
 \newlength{\thumbwidth}
-\setlength{\thumbwidth}{0.5cm}
+\setlength{\thumbwidth}{\ifshowcrop 2cm\else 0.5cm\fi} %0.5cm
 % style the boxes
 \tikzset{
 thumb/.style={
@@ -961,5 +1012,3 @@ thumb/.style={
 % ################################################################# MICROTYPE #
 
 \usepackage[final]{microtype}
-
-
