@@ -22,8 +22,8 @@
 \newif\ifmakebackmatter    \makebackmattertrue
 \newif\ifshowcrop           \showcroptrue
 
-\newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
-\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
+\newif\ifPRINTHOUSE 	   \PRINTHOUSEtrue
+\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
 
 %versions
@@ -676,14 +676,14 @@
 % bottom of page. BEWARE, it's from top of the (cut out) page, not the folio!
 \newlength{\thumbtopmargin}            \setlength{\thumbtopmargin}{1cm}
 \newlength{\thumbbottommargin}         \setlength{\thumbbottommargin}{1cm}
-\newlength{\thumbwidth}                \setlength{\thumbwidth}{1cm}
+\newlength{\thumbwidth}                \setlength{\thumbwidth}{2.20cm}
 \newlength{\thumbheight}
 \pgfmathsetlength{\thumbheight}%
   {(\csname Gm@layoutheight\endcsname-\thumbtopmargin-\thumbbottommargin)/\value{lettersum}}
 % inner xsep of letter from box margin
-\newlength{\thumbsep}                  \setlength{\thumbsep}{.25cm}
+\newlength{\thumbsep}                  \setlength{\thumbsep}{.30cm}
 % overlap over cutting line
-\newlength{\thumboverlap}              \setlength{\thumboverlap}{.5cm}
+\newlength{\thumboverlap}              \setlength{\thumboverlap}{3cm}
 
 \tikzset{
   thumb/.style={
@@ -726,17 +726,7 @@
                #1*\thumbheight)$) {\csname Let#1\endcsname};
    \end{tikzpicture}}
 
-\newcommand{\oddthumb} [1]{\drawthumb{#1}{west}}
-\newcommand{\eventhumb}[1]{\drawthumb{#1}{east}}
 
-\newcommand{\lettergroup}[1]%
-  {\refstepcounter{letternum}%
-   \expandafter\gdef\csname Let\theletternum\endcsname{#1}%
-   \xdef\thumbnew{\theletternum,\thumbnew}%
-   \fancyhead[LO]{\phvfamily\bfseries\rightmark%
-     \expandafter\ethumbs\thumbnew\relax\relax\relax}%
-   \fancyhead[RE]{\phvfamily\bfseries\leftmark%
-     \expandafter\othumbs\thumbnew\relax\relax\relax}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \else
@@ -797,25 +787,20 @@ thumb/.style={
 %            (0,\thumbtopmargin+\value{letternum}*\thumbheight)%
             (0,\thumbtopmargin+#1*\thumbheight)$) {\csname Let#1\endcsname};
    \end{tikzpicture}}
+\fi
 
-% I had to exchange the east/west anchors of the thumbs
-% because they were being drawn flipped. I don't know why.
 \newcommand{\oddthumb} [1]{\drawthumb{#1}{west}}
 \newcommand{\eventhumb}[1]{\drawthumb{#1}{east}}
 
-% create a new command to set a new lettergroup with thumb indexes
-\newcommand{\lettergroup}[1]{%
-  % step the counter of the letters
-  \refstepcounter{letternum}%
-  \expandafter\gdef\csname Let\theletternum\endcsname{#1}%
-  \xdef\thumbnew{\theletternum,\thumbnew}%
-  \fancyhead[LO]{\phvfamily\bfseries\rightmark%
-    \expandafter\ethumbs\thumbnew\relax\relax\relax}%
-  \fancyhead[RE]{\phvfamily\bfseries\leftmark%
-    \expandafter\othumbs\thumbnew\relax\relax\relax}%
-}
-\fi
-
+\newcommand{\lettergroup}[1]%
+  {\refstepcounter{letternum}%
+   \expandafter\gdef\csname Let\theletternum\endcsname{#1}%
+   \xdef\thumbnew{\theletternum,\thumbnew}%
+   \fancyhead[LO]{\phvfamily\bfseries\rightmark%
+     \expandafter\ethumbs\thumbnew\relax\relax\relax}%
+   \fancyhead[RE]{\phvfamily\bfseries\leftmark%
+     \expandafter\othumbs\thumbnew\relax\relax\relax}}
+     
 % ############################################################## LOCALIZATION #
 
 % renames the index name
