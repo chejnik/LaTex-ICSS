@@ -900,6 +900,15 @@ thumb/.style={
   \fi
    \ignorespaces}
 
+   \NewDocumentCommand\dicEntryGuide{o}
+  {\par\hangpara{0.29\baselineskip}{1}%
+   \IfValueT{#1}{\markboth{#1}{#1}}%
+    \ifPDFsearchvalue
+    \settowidth{\eyja}{#1}%
+  \makebox[\eyja]{\color{white}#1}\hspace{-\eyja}%
+  \fi
+   \ignorespaces}
+   
 \newcommand\dicSubEntry
   {\\\hspace*{-\hangindent}}
 
@@ -1072,4 +1081,21 @@ thumb/.style={
 % ################################################################# MICROTYPE #
 
 \usepackage[final]{microtype}
+
+% ############################################################## HYPHENATION #
+
+\lccode`\(`\(
+\lccode`\)`\)
+\lccode`\[`\[
+\lccode`\]`\]
+
+\hyphenation{
+  teo-rie
+  mi-liardy
+  (z)-od-po-věd-nost
+  tan-tié-ma
+  alian-ce
+  pe-dia-tr(ička)
+  pa-cienty
+  zá-chra-nář(ka)}
 
