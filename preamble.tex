@@ -22,8 +22,8 @@
 \newif\ifmakebackmatter    \makebackmattertrue
 \newif\ifshowcrop           \showcroptrue
 
-\newif\ifPRINTHOUSE 	   \PRINTHOUSEtrue
-\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
+\newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
+\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
 
 %versions
@@ -1000,6 +1000,8 @@ thumb/.style={
 %\let\photoicon\dicsymPhoto
 
 \newcommand{\vstretch}[1]{\vspace*{\stretch{#1}}}
+
+\newcommand*{\addthin}{\hskip0.16667em\relax}
 
 % #################################################################### COVERS #
 
