@@ -1,5 +1,5 @@
 % ########################################################### DOCUMENT CLASS #
-\documentclass[ %draft
+\documentclass[ draft
              % , demo  % black boxes instead of figures
               , 8pt, twoside, openright]{extbook}
 
@@ -22,8 +22,8 @@
 \newif\ifmakebackmatter    \makebackmattertrue
 \newif\ifshowcrop           \showcroptrue
 
-\newif\ifPRINTHOUSE 	   \PRINTHOUSEtrue
-\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
+\newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
+\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
 
 %versions
@@ -943,13 +943,13 @@ thumb/.style={
 \newcommand\dicExampleIS[1]{\dicsymExampleIS~\textIS{\textit{#1}}}
 
 \NewDocumentCommand\dicLink{sm}
-  {\IfBooleanF#1{\dicsymSee~}\dicTerm{#2}}
+  {\IfBooleanF#1{\dicsymSee\nobreak\hspace{.08667em plus .03333em}}\nobreak\hspace{.03667em}\dicTerm{#2}}
 \NewDocumentCommand\dicSynonym{sm}
-  {(\IfBooleanF#1{\dicsymSee~}\textIS{\textit{#2}})}
+  {(\IfBooleanF#1{\dicsymSee\nobreak\hspace{.08667em plus .03333em}}\nobreak\hspace{.03667em}\textIS{\textit{#2}})}
 \NewDocumentCommand\dicAntonym{sm}
-  {(\IfBooleanF#1{\dicsymCompare~}\textIS{\textit{#2}})}
+  {(\IfBooleanF#1{\dicsymCompare\nobreak\hspace{.08667em plus .03333em}}\nobreak\hspace{.03667em}\textIS{\textit{#2}})}
 \NewDocumentCommand\dicCompare{sm}
-  {(\IfBooleanF#1{\dicsymCompare~}\textIS{\textit{#2}})}
+  {(\IfBooleanF#1{\dicsymCompare\nobreak\hspace{.08667em plus .03333em}}\nobreak\hspace{.03667em}\textIS{\textit{#2}})}
 
 
 \newcommand\dicPhraseIS[1]{\textIS{\textbf{#1}}}
@@ -1082,11 +1082,40 @@ thumb/.style={
 
 \usepackage[final]{microtype}
 
-% ############################################################## HYPHENATION #
+% ############################################################### HYPHENATION #
 
-\begin{hyphenrules}{czech}
+% this allows to include brackets inside hyphenation rules f.e (pro)-dis-ku-to-vat
 \lccode`\(`\(
 \lccode`\)`\)
+\lccode`\[`\[
+\lccode`\]`\]
+
+\begin{hyphenrules}{icelandic}
+\hyphenation{
+  frum-semja
+  burm-neskur
+  ó-breytan-le-gur
+  pla-tó-nskt
+  skatta-fram-tal
+  skrúf-gang-ur
+  strand-rauð-viður
+  prent-sver-ta
+  grun-nur
+  uppi-skrop-pa
+  ger-vi-mennska
+  sö-lu-stað-ur
+  sý-na-gó-ga
+  mark-mið
+  trau-st-ur
+  ís-kyggi-leg-ur
+  brjó-sta-höld
+  kné-krjú-pa
+  nel-li-ka
+  kaffi-kvörn
+  margs-konar
+}
+\end{hyphenrules}
+\begin{hyphenrules}{czech}
 \hyphenation{
   teo-rie
   mi-liardy
@@ -1158,7 +1187,19 @@ thumb/.style={
   (pro)-di-s-ku-to-vat
   (vy)-ča-lou-nit
   (na)-oč-ko-vá-ní
-  Bhú-tán-ka}
+  Bhú-tán-ka
+  (za)-šně-ro-vat
+  soud-ní
+  re-vo-lu-cio-nář(ka)
+  á-zer-báj-d-žán
+  čtyř-hran-ný
+  ze-m-dle-lý
+  klou-zač-ka
+  Vest-mann-ské
+  tří-stran-ný
+  (za)-bu-rá-ce-ní
+  os-tud-ný
+  }
 \end{hyphenrules}
 
 
