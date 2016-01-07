@@ -1,5 +1,5 @@
 % ########################################################### DOCUMENT CLASS #
-\documentclass[ %draft
+\documentclass[ draft
              % , demo  % black boxes instead of figures
               , 8pt, twoside, openright]{extbook}
 
@@ -13,13 +13,13 @@
 \newif\ifPDFrotate         \PDFrotatetrue
 % true - adds white searchable value !
 \newif\ifPDFsearchvalue    \PDFsearchvaluetrue
-\newif\ifmakecovers        \makecoverstrue
-\newif\ifmakefrontmatter   \makefrontmattertrue
-\newif\ifinputintroduction \inputintroductiontrue
+\newif\ifmakecovers        \makecoversfalse
+\newif\ifmakefrontmatter   \makefrontmatterfalse
+\newif\ifinputintroduction \inputintroductionfalse
 \newif\ifinputletters      \inputletterstrue
-\newif\ifinputphon         \inputphontrue
-\newif\ifinputmorpho       \inputmorphotrue
-\newif\ifmakebackmatter    \makebackmattertrue
+\newif\ifinputphon         \inputphonfalse
+\newif\ifinputmorpho       \inputmorphofalse
+\newif\ifmakebackmatter    \makebackmatterfalse
 \newif\ifshowcrop           \showcroptrue
 
 \newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
