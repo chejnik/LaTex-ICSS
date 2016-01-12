@@ -1,5 +1,5 @@
 % ########################################################### DOCUMENT CLASS #
-\documentclass[ draft
+\documentclass[ %   draft
              % , demo  % black boxes instead of figures
               , 8pt, twoside, openright]{extbook}
 
@@ -13,27 +13,32 @@
 \newif\ifPDFrotate         \PDFrotatetrue
 % true - adds white searchable value !
 \newif\ifPDFsearchvalue    \PDFsearchvaluetrue
-\newif\ifmakecovers        \makecoversfalse
-\newif\ifmakefrontmatter   \makefrontmatterfalse
-\newif\ifinputintroduction \inputintroductionfalse
+\newif\ifmakecovers        \makecoverstrue
+\newif\ifmakefrontmatter   \makefrontmattertrue
+\newif\ifinputintroduction \inputintroductiontrue
 \newif\ifinputletters      \inputletterstrue
-\newif\ifinputphon         \inputphonfalse
-\newif\ifinputmorpho       \inputmorphofalse
-\newif\ifmakebackmatter    \makebackmatterfalse
+\newif\ifinputphon         \inputphontrue
+\newif\ifinputmorpho       \inputmorphotrue
+\newif\ifmakebackmatter    \makebackmattertrue
 \newif\ifshowcrop           \showcroptrue
+% corrections
+\newif\ifC                  \Ctrue
 
 \newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
-\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
+\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
+\newif\ifPDFtest	   \PDFtesttrue
 
 %versions
 %PRINTHOUSE
 \ifPRINTHOUSE
+\makecoversfalse
 \screenfalse
 \PDFfalse
 \PDFrotatefalse
 \PDFsearchvaluefalse
 \showcroptrue
+\Ctrue
 \fi
 
 %PDFSEARCH
@@ -43,6 +48,7 @@
 \PDFrotatetrue
 \PDFsearchvaluetrue
 \showcropfalse
+\Ctrue
 \fi
 
 %PDFPRINT
@@ -52,6 +58,24 @@
 \PDFrotatefalse
 \PDFsearchvaluefalse
 \showcropfalse
+\Ctrue
+\fi
+
+%PDFtest
+\ifPDFtest
+\makecoversfalse
+\makefrontmatterfalse
+\inputintroductionfalse
+\inputletterstrue
+\inputphonfalse
+\inputmorphofalse
+\makebackmatterfalse
+\screentrue
+\PDFtrue
+\PDFrotatefalse
+\PDFsearchvaluefalse
+\showcropfalse
+\Cfalse
 \fi
 
 % 1. PDF (for printing)  
@@ -238,10 +262,19 @@
 \setlength\parskip{0pt} % it's better to avoid glue
 
 % Temporarily suppress warnings
-\hbadness=10000
-\vbadness=10000
+\hbadness=5000
+\vbadness=5000
 
 \setlength\emergencystretch{17pt}
+
+% Allow smaller emergencystretch in several cases
+\newenvironment{xtolerant}[2]{%
+  \par
+  \ifx\empty#1\empty\else\tolerance=#1\relax\fi
+  \ifx\empty#2\empty\else\emergencystretch=#2\relax\fi
+}{%
+  \par
+}
 
 % ######################################################### ASSORTED PACKAGES #
 
@@ -899,7 +932,7 @@ thumb/.style={
   \makebox[\eyja]{\color{white}#1}\hspace{-\eyja}%
   \fi
    \ignorespaces}
-
+   
    \NewDocumentCommand\dicEntryGuide{o}
   {\par\hangpara{0.29\baselineskip}{1}%
    \IfValueT{#1}{\markboth{#1}{#1}}%
@@ -938,7 +971,7 @@ thumb/.style={
   \NewDocumentCommand\dicFlx{smo}
   {{\color{darkgreen}\footnotesize#2%
    \IfValueT{#3}{\nobreak\textsubscript{#3}}}}
-   
+  
 \newcommand\dicExampleCS[1]{\dicsymExampleCS~\textit{#1}}
 \newcommand\dicExampleIS[1]{\dicsymExampleIS~\textIS{\textit{#1}}}
 
@@ -1011,6 +1044,7 @@ thumb/.style={
 \newcommand{\vstretch}[1]{\vspace*{\stretch{#1}}}
 
 \newcommand*{\addthin}{\hskip0.16667em\relax}
+\newcommand*{\addthinS}{\hskip0.06667em\relax}
 
 % #################################################################### COVERS #
 

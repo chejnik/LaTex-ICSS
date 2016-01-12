@@ -164,9 +164,11 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 %\foreach \l in \alphabet{
 %  \input{letters/\l.tex}}
 
-%\input{letters}
-\input{letters_problematic_2}
-
+%\ifPDFtest
+%\input{letters_problematic_3}
+%\else
+\input{letters}
+%\fi
 \restoregeometry
 \pagestyle{plain}
 
