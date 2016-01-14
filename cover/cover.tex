@@ -1,0 +1,173 @@
+\documentclass[8pt,
+	marklength=20mm,
+	coverwidth=162mm,
+	coverheight=229mm,
+	bleedwidth=10mm,spinewidth=45mm]{bookcover}
+
+\usepackage{blindtext}
+
+\usepackage[icelandic, latin, czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{tgpagella}
+% #################################################################### COLORS #
+
+\usepackage{color}
+\definecolor {title}              {RGB} {  16,   13,   32}
+
+\graphicspath{%
+  {/home/chejnik/Dokumenty/hvalur.org/images/biolib/full/}%
+  {/home/chejnik/Dokumenty/hvalur.org/images/uploaded_files/}}
+
+  
+% #################################################################### LAYOUT #
+
+% \normalsize should be {8pt}{9.6pt}
+\def\HUGE {\fontsize{23.887872pt}{3\baselineskip}\selectfont}
+\def\Huge {\fontsize{19.906560pt}{3\baselineskip}\selectfont}
+\def\huge {\fontsize{16.588800pt}{3\baselineskip}\selectfont}
+\def\LARGE{\fontsize{13.824000pt}{2\baselineskip}\selectfont}
+\def\Large{\fontsize{11.520000pt}{2\baselineskip}\selectfont}
+\def\large{\fontsize{ 9.600000pt}{2\baselineskip}\selectfont}
+
+% Two columns layout ruler
+\setlength\columnsep    {2\baselineskip}
+\setlength\columnseprule{0.4pt}
+
+% Necessary for baseline alignment
+\topskip=\baselineskip
+\raggedbottom
+\setlength\parskip{0pt} % it's better to avoid glue
+
+% Temporarily suppress warnings
+\hbadness=5000
+\vbadness=5000
+
+\setlength\emergencystretch{17pt}
+
+% Allow smaller emergencystretch in several cases
+\newenvironment{xtolerant}[2]{%
+  \par
+  \ifx\empty#1\empty\else\tolerance=#1\relax\fi
+  \ifx\empty#2\empty\else\emergencystretch=#2\relax\fi
+}{%
+  \par
+}
+
+% ######################################################### ASSORTED PACKAGES #
+
+
+% #################################################################### COVERS #
+
+\newcommand\makebookmarkfront{
+ \begin{landscape}
+\begin{center}
+\vspace*{\fill}
+ {\Huge\scshape\color{darkgreen}%
+   \dictnameCZ\\\dictnameIS}
+ \vspace*{\fill}
+\end{center}
+\end{landscape}
+\clearpage
+ }
+  
+\def\dictnameCZ{islandsko-český studijní slovník}
+\def\dictnameIS{íslensk-tékknesk stúdentaorðabók}
+ \renewcommand{\baselinestretch}{0.7}
+ 
+\newcommand*{\frontcoverimages}{%
+  ds_image_blaberjalyng_0_2.jpg,
+  ds_image_lundi_0_1.jpg,
+  ds_image_hestur_0_1.jpg,
+  ds_image_hrafnafifa_0_2.jpg,
+  ds_image_baldursbra_0_1.jpg,
+  20948.jpg,
+  ds_image_hvalur_0_1.jpg,
+  ds_image_blodberg_0_1.jpg}
+
+\newcommand*{\backcoverimages}{%
+  ds_image_spoi_0_1.jpg,
+  ds_image_mosalyng_0_1.jpg,
+  ds_image_blaklukkulyng_0_1.jpg,
+  20787.jpg,
+  ds_image_ufsi_0_2.jpg,
+  %ds_image_gullbra_0_1.jpg,
+  ds_image_vatnsberi_0_1.jpg,
+  ds_image_islandsfifill_0_2.jpg,
+  21137.jpg}
+
+\newcommand\makecoverwith[1]{
+ %\pagecolor{title}\afterpage\nopagecolor
+ \begin{center}
+ \vspace*{0.3cm}%{\fill}
+ {\Huge\scshape\color{white}%
+   \dictnameCZ\\\dictnameIS}
+ \vspace*{1em}                        % I think this is necessary
+ \begin{figure}[ht]\centering%
+   \setlength\fboxsep{0pt}\setlength\fboxrule{0.5pt}%
+   \foreach \file in #1{
+     \fbox{\includegraphics[width=5.5cm]{\file}}}
+ \end{figure}
+ \vspace*{\fill}
+ \end{center}
+}
+
+
+\begin{document}
+
+%back cover
+\setbookcover{bgcolor}{back}{%
+color=title,
+}
+
+\setbookcover{fgfirst}{back}{%
+\vspace{2cm}
+\centering
+\makecoverwith\backcoverimages
+}
+
+%front cover
+\setbookcover{bgcolor}{front}{%
+color=title,
+}
+
+\setbookcover{fgfirst}{front}{%
+\centering
+\vspace{2cm}
+\makecoverwith\frontcoverimages
+}
+
+%spine
+\setbookcover{bgcolor}{spine}{%
+color=title,
+}
+
+\setbookcover{fgfirst}{spine}{
+\vspace{4cm}
+
+\begin{center}\Huge\scshape\color{white}%
+   islandsko-\\
+   český\\
+   studijní\\
+   slovník
+  \end{center}
+  \vspace*{0.1cm}%{\fill}
+    
+   \begin{center}\Huge\scshape\color{white}%
+   íslensk-\\
+   tékknesk\\
+   stúdenta-\\
+   orðabók
+   \end{center}
+   
+   \vspace*{10cm}%{\fill}
+
+\begin{center}
+{\color{white}www.hvalur.org}
+\end{center}
+
+\vfill}
+
+\makebookcover
+\end{document}
