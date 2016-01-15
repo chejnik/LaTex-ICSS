@@ -1,5 +1,5 @@
 % ########################################################### DOCUMENT CLASS #
-\documentclass[    draft
+\documentclass[ %   draft
              % , demo  % black boxes instead of figures
               , 8pt, twoside, openright]{extbook}
 
@@ -25,9 +25,9 @@
 \newif\ifC                  \Ctrue
 
 \newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
-\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
+\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
-\newif\ifPDFtest	   \PDFtesttrue
+\newif\ifPDFtest	   \PDFtestfalse
 
 %versions
 %PRINTHOUSE
@@ -299,11 +299,19 @@
 \usepackage{rotating}
 
 \usepackage{etoolbox} % http://ctan.org/pkg/etoolbox
-
+%\usepackage{newunicodechar} 		% new definition of middle dot
 \usepackage[ISBN=978-80-260-2385-2,SC0]{ean13isbn}
 
 \usepackage{pgffor}
 
+% Middle dot + | little bit closer, nicer
+%\newunicodechar{·}{\advancedcdot}
+%\makeatletter
+%\newcommand*\advancedcdot{\textperiodcentered
+%  \@ifnextchar|{\hspace{-0.03667em}}{\checkifcdotnext}}
+%\newcommand*\checkifcdotnext[2]
+%  {\def\tmpa{·}\def\tmpb{#1#2}\ifx\tmpa\tmpb\hspace{-0.06667em}\fi#1#2}
+%\makeatother
 
 % ############################################################ BASELINE GRID #
 
