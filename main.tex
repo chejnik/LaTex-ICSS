@@ -156,19 +156,15 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 \dictionarygeometry
 \pagestyle{myheadings}
 
-%\newcommand*{\alphabet}{%
-%  a,aa,b,c,d,dd,e,ee,f,g,h,i,ii,j,k,l,m,
-%  %n,o,oo,p,r,s,t,u,uu,v,w,x,y,yy,th,ae,oe
-%  }
-
-%\foreach \l in \alphabet{
-%  \input{letters/\l.tex}}
+\newcommand*{\alphabetF}{%
+  a,aa,b,c,d,e,ee,f,g,h,i,ii,j,k,l,m,
+  n,o,oo,p,r,s1,s2, t,u,uu,v,w,x,y,yy,th,ae,oe}
 
 \ifPDFtest
-\input{letters}
-%\input{letters_problematic_3}
+\input{letters/a}
 \else
-\input{letters}
+\foreach \l in \alphabetF{
+  \input{letters/\l.tex}}
 \fi
 \restoregeometry
 \pagestyle{plain}
