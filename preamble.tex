@@ -1,5 +1,5 @@
 % ########################################################### DOCUMENT CLASS #
-\documentclass[ %   draft
+\documentclass[    draft
              % , demo  % black boxes instead of figures
               , 8pt, twoside, openright]{extbook}
 
@@ -25,9 +25,9 @@
 \newif\ifC                  \Ctrue
 
 \newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
-\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
+\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
-\newif\ifPDFtest	   \PDFtestfalse
+\newif\ifPDFtest	   \PDFtesttrue
 
 %versions
 %PRINTHOUSE
@@ -262,7 +262,7 @@
 \setlength\parskip{0pt} % it's better to avoid glue
 
 % Temporarily suppress warnings
-\hbadness=5000
+\hbadness=9900
 \vbadness=5000
 
 \setlength\emergencystretch{17pt}
@@ -303,6 +303,23 @@
 \usepackage[ISBN=978-80-260-2385-2,SC0]{ean13isbn}
 
 \usepackage{pgffor}
+
+\usepackage{newunicodechar}
+
+\newunicodechar{·}{\chejnikcdot}
+\makeatletter
+\newcommand{\chejnikcdot}{%
+  \ifnum\lastpenalty=10042
+    \kern-0.06667em\relax % dots should always be kerned
+  \fi
+  \textperiodcentered
+  \@ifnextchar|{\kern\chejnikkern\relax}{\penalty10042 }%
+}
+
+\newcommand{\closeupdotbar}{%
+  \renewcommand\chejnikkern{-0.06667em}%
+}
+\newcommand\chejnikkern{0pt} % default
 
 % Middle dot + | little bit closer, nicer
 %\newunicodechar{·}{\advancedcdot}
@@ -962,7 +979,7 @@ thumb/.style={
 \NewDocumentCommand\dicStyleExtTerm{m}{\textIS{\textit{#1}}}
 
    \NewDocumentCommand\dicTerm{mo}
-  {{\phvfamily\bfseries\textIS{#1}}\IfValueT{#2}{, \phvfamily\bfseries\textIS{#2}}}
+  {{\closeupdotbar \phvfamily\bfseries\textIS{#1}}\IfValueT{#2}{, \phvfamily\bfseries\textIS{#2}}}
 
   \newcommand\dicTermList[1]
   {\foreach \t [count=\n] in {#1}{\ifnum\n=1\else, \fi\dicTerm{\t}}}
