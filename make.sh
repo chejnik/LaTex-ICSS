@@ -3,7 +3,7 @@
  vlna -l -m -n -v KkSsVvZzOoUuAaIi introduction/uvod.tex
  vlna -l -m -n -v KkSsVvZzOoUuAaIi introduction/historie.tex
  vlna -l -m -n -v KkSsVvZzOoUuAaIi introduction/instructions.tex
- vlna -l -m -n -v KkSsVvZzOoUuAaIi letters.tex
+# vlna -l -m -n -v KkSsVvZzOoUuAaIi letters.tex
 
 # Clean directory
 rm main.bbl main.blg main.run.xml main.toc main.aux main.bcf main.out main.log
