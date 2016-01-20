@@ -25,9 +25,9 @@
 \newif\ifC                  \Ctrue
 
 \newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
-\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
+\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
-\newif\ifPDFtest	   \PDFtesttrue
+\newif\ifPDFtest	   \PDFtestfalse
 
 %versions
 %PRINTHOUSE
@@ -262,7 +262,7 @@
 \setlength\parskip{0pt} % it's better to avoid glue
 
 % Temporarily suppress warnings
-\hbadness=5000
+\hbadness=2000
 \vbadness=5000
 
 \setlength\emergencystretch{17pt}

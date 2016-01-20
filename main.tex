@@ -157,14 +157,13 @@ hesla bezpatkovým fontem {\phvfamily Helvetica}.
 \pagestyle{myheadings}
 
 \newcommand*{\alphabetF}{%
-  a,aa,b,c,d,e,ee,f,g,h,i,ii,j,k,l,m,
-  n,o,oo,p,r,s1,s2, t,u,uu,v,w,x,y,yy,th,ae,oe}
-
+  a,aa,b,c,d,e,ee,f,g,h,i,ii,j,k,l,m,n,o,oo,p,r,s1,s2,t,u,uu,v,w,x,y,yy,th,ae,oe}
 \ifPDFtest
-\input{letters/a}
+\input{letters}
 \else
-\foreach \l in \alphabetF{
-  \input{letters/\l.tex}}
+\makeatletter
+\@for\next:=\alphabetF\do{\input{letters/\next.tex}}
+\makeatother 
 \fi
 \restoregeometry
 \pagestyle{plain}
