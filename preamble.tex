@@ -1,5 +1,5 @@
 % ########################################################### DOCUMENT CLASS #
-\documentclass[  %   draft
+\documentclass[     draft
              % , demo  % black boxes instead of figures
               , 8pt, twoside, openright]{extbook}
 
@@ -25,9 +25,9 @@
 \newif\ifC                  \Ctrue
 
 \newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
-\newif\ifPDFSEARCH  	   \PDFSEARCHtrue
+\newif\ifPDFSEARCH  	   \PDFSEARCHfalse
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
-\newif\ifPDFtest	   \PDFtestfalse
+\newif\ifPDFtest	   \PDFtesttrue
 
 %versions
 %PRINTHOUSE
@@ -1072,6 +1072,7 @@ thumb/.style={
 \newcommand*{\addthinS}{\hskip0.06667em\relax}
 \newcommand*{\addthinM}{\hskip0.10007em\relax}
 \newcommand*{\addthinSS}{\hskip0.00007em\relax}
+% \textls[15]{
 % #################################################################### COVERS #
 
 \def\dictnameCZ{islandsko-český studijní slovník}
