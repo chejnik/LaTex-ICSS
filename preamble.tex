@@ -24,10 +24,10 @@
 % corrections
 \newif\ifC                  \Ctrue
 
-\newif\ifPRINTHOUSE 	   \PRINTHOUSEtrue
+\newif\ifPRINTHOUSE 	   \PRINTHOUSEfalse
 \newif\ifPDFSEARCH  	   \PDFSEARCHfalse
 \newif\ifPDFPRINT 	   \PDFPRINTfalse
-\newif\ifPDFtest	   \PDFtestfalse
+\newif\ifPDFtest	   \PDFtesttrue
 
 %versions
 %PRINTHOUSE
@@ -66,9 +66,9 @@
 \makecoversfalse
 \makefrontmatterfalse
 \inputintroductionfalse
-\inputletterstrue
+\inputlettersfalse
 \inputphonfalse
-\inputmorphofalse
+\inputmorphotrue
 \makebackmatterfalse
 \screentrue
 \PDFtrue
@@ -1015,11 +1015,16 @@ thumb/.style={
 \NewDocumentCommand\dicIdiom{mo}
   {\dicSubEntry{\color{newdev}\dicStyleIntTerm{#1} %
      \IfValueTF{#2}{+ \dicStyleIntTerm{#2} \markboth{#1 + #2}{#1 + #2}}{\markboth{#1}{#1}}}\dicsymIdiom}
+
+\NewDocumentCommand\dicIdiomIntro{mo}
+  {{\color{newdev}\dicStyleIntTerm{#1} %
+     \IfValueTF{#2}{+ \dicStyleIntTerm{#2} \markboth{#1 + #2}{#1 + #2}}{\markboth{#1}{#1}}}\dicsymIdiom}
      
 \newcommand\dicProverb
   {\dicSubEntry\dicsymProverb}
 
-
+\newcommand\dicProverbIntro
+  {\dicsymProverb}
 
 \newcommand\dicLangCat[1]{{\footnotesize#1}}
 \newcommand\dicFieldCat[1]{{\footnotesize#1}}

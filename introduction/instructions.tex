@@ -65,7 +65,7 @@
   \label{table2}}
 
 \def\tableC{\noindent\begin{tabularx}{\columnwidth}
-    {>{\bfseries}l>{\footnotesize\itshape}lllll}
+    {>{\bfseries}l>{\footnotesize\itshape}l>{\small}l>{\small}l>{\small}l>{\small}l}
   \toprule
   \multirow{3}{*}{{{\textbf{f{\textsubscript{1}}} \Large{\textbf{7}}}}}
     & nom & kisa & kisan    & kisur & kisurnar \\
@@ -443,7 +443,7 @@ Pokud je přídavné jméno nesklonné, je uvedena zkratka \textbf{indecl}.
   \dicEntry \dicTerm{tví··mála} \dicPos{adj} \dicFlx{indecl}
 \blspace
 
-\textls[15]{Pokud má přídavné jméno nepravidelné tvary 2.~a~3.~stupně stupňování, jsou tyto tvary uvedeny v~závorce spolu se zkratkou pro 2.~stupeň (\textbf{comp}) a~3.~stupeň (\textbf{sup}).}
+\textls[24]{Pokud má přídavné jméno nepravidelné tvary} 2.~a~3.~stupně stupňování, jsou tyto tvary uvedeny v~závorce spolu se zkratkou pro 2.~stupeň (\textbf{comp}) a~3.~stupeň (\textbf{sup}).
 
 \blspace
   \dicEntry \dicTerm{þunnur} \dicPos{adj} \dicFlx{(comp þynnri, sup þynnstur)}
@@ -617,27 +617,34 @@ Mezi slovní spojení v~tomto slovníku řadíme a) tvary heslového slova, b) p
 \begin{enumerate}
 \item Tvary heslového slova\\
 Do této skupiny řadíme tvar množného čísla hesla (zkratka \textbf{pl}).
+
 \blspace
-\dicEntry \dicTerm{bót} \dicPos{f} \dicFlx{(-ar, bætur)} \textbf{bætur} \dicFlx{pl} {dávky, přídavky, příspěvky}\\
+\dicEntry \dicTerm{bót} \dicPos{f} \dicFlx{(-ar, bætur)} \textbf{bætur} \dicFlx{pl} {dávky, přídavky, příspěvky}
+\blspace
 
-Dále do této skupiny řadíme tvar slovesa v~středním slovesném rodě (zkratka \textbf{refl}).\\
+Dále do této skupiny řadíme tvar slovesa v~středním slovesném rodě (zkratka \textbf{refl}). 
 
-\dicEntry \dicTerm{finna} \dicPos{v} \dicFlx{(finn, fann, fundum, fyndi, fundið)} \dicIdiom{finnast} {\dicPhraseIS{finnast}} \dicFlx{refl} {být nalezen, najít se, nalézt se, nacházet se}
+\blspace
+\dicEntry \dicTerm{finna} \dicPos{v} \dicFlx{(finn, fann, fundum, fyndi, fundið)} \\
+\dicIdiomIntro{finnast} {\dicPhraseIS{finnast}} \dicFlx{refl} {být nalezen, najít se, nalézt se, nacházet se}
 \blspace
 \item Příkladová spojení\\
 Příkladová spojení ilustrují komunikační chování heslových slov v~příslušných významech a~v~různých syntagmatech (např. sloveso s~určitou předložkou ap.). Jsou označena tučně modrou barvou a~odsazená pro snadnou orientaci jako svébytné heslo.
 \blspace
-\dicEntry \dicTerm{koma\textsuperscript{2}} \dicPos{v} \dicFlx{(kem, kom, komum, kæmi, komið)} \dicIdiom{koma}[að] {\dicPhraseIS{koma að e-m}} {přiblížit se ke (komu), přijít ke (komu)}
+\dicEntry \dicTerm{koma\textsuperscript{2}} \dicPos{v} \dicFlx{(kem, kom, komum, kæmi, komið)} \\
+\dicIdiomIntro{koma}[að] {\dicPhraseIS{koma að e-m}} {přiblížit se ke (komu), přijít ke (komu)}
 \blspace
 \item Ustálená slovní spojení\\
 Tento druh slovních spojení je charakterizován většinou přeneseným významem. Tato spojení jsou uváděna za posledním významem nebo příkladovým spojením a~jsou označená tučně modrou barvou a~odsazená pro snadnou orientaci jako svébytné heslo.
 \blspace
-\dicEntry \dicTerm{kast} \dicPos{n} \dicFlx{(-s, köst)} \dicIdiom{kast} {\dicPhraseIS{þegar til kastanna kemur}} {\footnotesize{přen.}} {když jde do tuhého}
+\dicEntry \dicTerm{kast} \dicPos{n} \dicFlx{(-s, köst)} \\
+\dicIdiomIntro{kast} {\dicPhraseIS{þegar til kastanna kemur}} {\footnotesize{přen.}} {když jde do tuhého}
 \blspace
 \item Rčení a~přísloví\\
 Rčení a~přísloví se nacházejí vždy na konci definice a~jsou odlišená symbolem \dicsymProverb\ a~odsazená pro snadnou orientaci.
 \blspace
-\dicEntry \dicTerm{æfing} \dicPos{f} \dicFlx{(-ar, -ar)} \dicProverb{} \dicPhraseIS{Æfing skapar meistara.} {\footnotesize{přís.}} \textCS{Cvičení dělá mistra.}
+\dicEntry \dicTerm{æfing} \dicPos{f} \dicFlx{(-ar, -ar)} \\
+\dicProverbIntro{} \dicPhraseIS{Æfing skapar meistara.} {\footnotesize{přís.}} \textCS{Cvičení dělá mistra.}
 \end{enumerate}
 
 \section{Vícevýznamovost}
@@ -805,7 +812,8 @@ Praktickým příkladem může být a) (složené) slovo, b) slovní spojení ne
 \blspace
 \item Věta jako praktický příklad:
 \blspace
-\dicEntry \dicTerm{mæt|a} \dicPos{v} \dicFlx{(-ti, -t)} \dicIdiom{mætast} \dicPhraseIS{mætast} \dicSynonym*{ná saman} \dicFlx{refl} {setkat se, potkat se} \dicExampleIS{Þau mættust á gangstéttinni.} \dicExampleCS{Potkali se na chodníku.}
+\dicEntry \dicTerm{mæt|a} \dicPos{v} \dicFlx{(-ti, -t)} \\
+\dicIdiomIntro{mætast} \dicPhraseIS{mætast} \dicSynonym*{ná saman} \dicFlx{refl} {setkat se, potkat se} \dicExampleIS{Þau mættust á gangstéttinni.} \dicExampleCS{Potkali se na chodníku.}
 \end{enumerate}
 
 \section{Fotografie a~ilustrace}
