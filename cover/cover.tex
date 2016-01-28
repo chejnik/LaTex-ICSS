@@ -72,8 +72,12 @@
 \clearpage
  }
   
-\def\dictnameCZ{islandsko-český studijní slovník}
-\def\dictnameIS{íslensk-tékknesk stúdentaorðabók}
+\def\dictnameCZ{islandsko\addthinS\czHyphen\addthinS český studijní slovník}
+\def\dictnameIS{íslensk\czHyphen tékknesk stúdentaorðabók}
+\newcommand{\czHyphen}{\rule[.45ex]{.2em}{.11ex}}
+\newcommand*{\addthinS}{\hskip0.06667em\relax}
+\newcommand*{\addthinSS}{\hskip0.00007em\relax}
+
  \renewcommand{\baselinestretch}{0.7}
  
 \newcommand*{\frontcoverimages}{%
@@ -147,17 +151,17 @@ color=title,
 \vspace{4cm}
 
 \begin{center}\Huge\scshape\color{white}%
-   islandsko-\\
-   -český\\
+   islandsko\addthinS\rlap{\czHyphen}\\
+    \mbox{}\llap{\czHyphen}\addthinS český\\
    studijní\\
    slovník
   \end{center}
   \vspace*{0.1cm}%{\fill}
     
    \begin{center}\Huge\scshape\color{white}%
-   íslensk-\\
-   -tékknesk\\
-   stúdenta-\\
+   íslensk\rlap{\czHyphen}\\
+   \mbox{}\llap{\czHyphen}\addthinS tékknesk\\
+   stúdenta\rlap{\czHyphen}\\
    orðabók
    \end{center}
    
