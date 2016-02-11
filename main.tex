@@ -70,7 +70,7 @@ Slovenské republice a na Islandu poskytli:\\
   \\[33\baselineskip]
   \fi
 \textit{Islandsko-český studijní slovník} \textcopyright\  \textbf{Aleš Chejn, Ján Zaťko, Jón Gíslason}, 2016\\
-\textit{Islandská gramatika} \textcopyright\  \textbf{Vojtěch Kupča}, 2016\\[\baselineskip]
+\textit{Islandská gramatika} \textcopyright\  \textbf{Vojtěch Kupča}, 2014\\[\baselineskip]
 \ifPDF
 Verze: \textbf{PDF verze} \textit{Islandsko-českého studijního slovníku} vhodná pro \textbf{\ifscreen offline prohlížení a vyhledávání\else vlastní tisk\fi}\\ volně dostupná na \url{www.hvalur.org}\\[\baselineskip]
 \else
@@ -281,13 +281,30 @@ Vazba:  \textbf{Knihařství Vojtíšková Hrubá, Pardubice}\\
 \restoregeometry  
 \fi
 
-% ------------------------------------------------------------------ Barcode -
+% ------------------------------------------------------------------ Tiraz Barcode -
 \pagenumbering{gobble}
 \ifPDF
 \else
-\cleardoublepage\null\clearpage % clear to verso
-\vspace*\fill
+%\cleardoublepage\null\clearpage % clear to verso
+\cleardoublepage % clear to verso
+\noindent\begin{minipage}[t][\textheight][t]{\textwidth}
+\vspace*{\stretch{2}}
+\begin{center}
+{\Large{\textbf{Islandsko-český studijní slovník}}}\\[\baselineskip]
+  {\textbf{Aleš Chejn, Ján Zaťko, Jón Gíslason}}\\[\baselineskip]
+Vydal: \textbf{Aleš Chejn}, Husova 1674, Pardubice 53003\\
+e-mail: \href{mailto:achejn@gmail.com}{achejn@gmail.com}\\
+Korektury: Lucie Brabcová, Martina Kašparová\\
+Sazba: Aleš Chejn, \LaTeX\\
+Tisk: \textbf{Tiskárna MELMEN, s.r.o.}, Pardubice\\
+Vazba:  \textbf{Knihařství Vojtíšková Hrubá}, Pardubice\\
+první vydání, únor 2016\\
+1012 stran\\[\baselineskip]
+\textbf\ISBN\\[\baselineskip]
+\end{center}
+\vspace*{\stretch{2}}
 \EANisbn[SC3]
+\end{minipage}
 \fi
 \fi
 

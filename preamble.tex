@@ -69,9 +69,9 @@
 \inputletterstrue
 \inputphonfalse
 \inputmorphofalse
-\makebackmatterfalse
+\makebackmattertrue
 \screentrue
-\PDFtrue
+\PDFfalse
 \PDFrotatefalse
 \PDFsearchvaluefalse
 \showcropfalse
@@ -173,6 +173,17 @@
   }} 
 \fi
 
+\def\cropmarkgap{7}% mm
+
+\makeatletter
+\def\Gm@cropmark(#1,#2,#3,#4){% #1 = x direction, #2 = y direction, #3 & #4 no longet used
+  \begin{picture}(0,0)
+    \setlength\unitlength{1truemm}%
+    \linethickness{0.25pt}%
+    \put(\the\numexpr #1*\cropmarkgap\relax,0){\line(#1,0){\the\numexpr 20-\cropmarkgap}}%
+    \put(0,\the\numexpr #2*\cropmarkgap\relax){\line(0,#2){\the\numexpr 20-\cropmarkgap}}%
+  \end{picture}}%
+\makeatother
 % ################################################################# LANGUAGES #
 
 \usepackage[icelandic, latin, czech]{babel}
